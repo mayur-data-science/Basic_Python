@@ -9,7 +9,7 @@ def factorial(num):
                                             # return 4 * factorial(3)  # 4 * 6  # return 24
                                             # return 3 * factorial(2)  # 3 * 2  # return 6 
                                             # return 2 * factorial(1)  # 2 * 1  # return 2
-                                            #               if True     # else bolc wont run bcz if conditon evaluates True so no function call again.
+                                            #               if True     # else bolc wont run bcz "if" conditon evaluates "True" so no function call again.
                                                                 # return 1
 num1 = 5
 result = factorial(num1) # calling function # result = 120
