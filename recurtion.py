@@ -12,5 +12,5 @@ def factorial(num):
                                             #               if True     # else bolc wont run bcz if conditon evaluates True so no function call again.
                                                                 # return 1
 num1 = 5
-result = factorial(num1) # calling function
-print(result)
+result = factorial(num1) # calling function # result = 120
+print(result) # 120
