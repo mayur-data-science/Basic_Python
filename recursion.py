@@ -1,4 +1,4 @@
-# Recurtion in python
+# Recursion in python
 
 def factorial(num):
     if num == 1:
