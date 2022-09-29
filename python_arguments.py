@@ -12,9 +12,9 @@ def sum(a,b): # Here a,b are the parameters
 sum(1,2)
 
 # Arguments:
-        # An argument is a value that is passed to a function when it is called. 
-        # It might be a variable, value or object passed to a function or method as input. 
-        # They are written when we are calling the function.
+        # An argument is a data that is passed to a function when it is called. 
+        # Data might be a callable function, string, int, float, boolean(True or False) as input. 
+        # They are written in the function call.
 
 # Ex1:
 
@@ -22,6 +22,18 @@ def sum(a,b):
     print(a+b)
     
 sum(1,2) # Here the values 1,2 are arguments
+
+# Ex2:
+def sum(a,b): 
+    print("a is : ", a)
+    print("b is : ", b)
+    print(a==b)
+sum(1,True) # passing boolean data
+# in python "1" is considered as "True" and "0", negative, positive integer, is considered as "False".
+# o/p :
+        # a is :  1
+        # b is :  True
+        # True
 
 # Positional Arguments :
         # Positional Arguments are needed to be included in proper order
@@ -68,12 +80,13 @@ fruits('apple', b = 'banana', p = 'pineapple')  # two Keyword Argument, one Posi
 
 
 
-# Python Default Arguments:
+# Python Default and Non-default Parameters:
+
     #   Function parameters have default data assigned to them. (data can be callable function, string, int, float, boolean(True or False) )
     #   This can be done by using the assignment operator (=) in the function parameter. 
-    #   When a function is called without  an argument, the default data is used from parameter. 
-    #   This is useful when someone forgets to pass an argument to the function and executes the program.
-    #   default arguments , must be followed by Non-default arguments(positional argument).
+    #   When a function is called without an argument, the default data is used from parameter inside function. 
+    #   This is useful when someone forgets to pass an argument while calling function and executes the program.
+    #   default arguments(parameter) , must be followed by Non-default arguments(parameter).
     #   means we must write positional argument first, then deafult argument
 
     # Note – Python Default arguments are also called as Python Optional arguments.
@@ -82,13 +95,13 @@ fruits('apple', b = 'banana', p = 'pineapple')  # two Keyword Argument, one Posi
     #        if we dont provide default argument while calling function, the default data will be utilized from function parameter.
 
 # Ex1: 
-def welcome(fullname, msg = 'Welcome to python!!'): # fullname is positional parameter and msg is default parameter.
+def welcome(fullname, msg = 'Welcome to python!!'): # fullname is Non-Default parameter and msg is Default parameter.
     print('Hey there', fullname + ', ' + msg) # If the msg argument is not provided while calling function, then the default data from the function parameter is utilized.
 
-welcome('Sam')  # Here we are only passing one positional argument which is mandatory. 
-                # and we are not passing second argument which is "optional argument" while calling function
+welcome('Sam')  # Here we are only passing one positional argument which is mandatory for function call. 
+                # and we are not passing second argument which is "optional(default) argument" while calling function
                 # while calling a function its mandatory to pass argument in same order which defined in function declaration as parameter.
-welcome('Zack', 'How have you been?') # 2nd argument value(data) passed; will not use functions default parameter data.
+welcome('Zack', 'How have you been?') # 2nd argument data passed as a string, welcome function will not use its default parameter data.
 
 # o/p: 
     # Hey there Sam, Welcome to python!!
@@ -118,17 +131,15 @@ welcome('Zack',28)
 # Ex 2
     # Non-default arguments, cannot be followed by default arguments.
 
-def function(a = 24, b, c):
+# def function(a = 24, b, c): # SyntaxError: non-default argument follows default argument
+# def function(b,a=24,c) # SyntaxError: non-default argument follows default argument
+def function(b,c, a= 24,): # valid
     print('Values are:')
     print(a)
     print(b)
     print(c)
 
 function(10, 4)
-
-# o/p: SyntaxError: non-default argument follows default argument
-
-
 
 
 
