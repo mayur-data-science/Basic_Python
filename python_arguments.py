@@ -151,23 +151,33 @@ adder(5,10,15,20,25)
 ###### To solve this problem (*args and **kwargs (Arbitrary Arguments) concept is impotant to learn)######
 
 # Iterable Unpacking: 
-        # Any iterable in python, a list, tuple, set is said to have a pack of values.
-        # We can unpack the values inside an iterable into individual variables.
+        # Any iterable in python, a list(ordered), dict(ordered), tuple(ordered), set(unordered) is said to have a pack of values.(String is also iterable object)
+        # We can unpack the values from an iterable into a individual variables.
         
-        
+        # As of Python version 3.10.7, dictionaries are "ordered". In Python 3.6 and earlier, dictionaries are unordered.
         # Note: in case of unordered iterables like a set(duplicate elements not allowed), the sequence of values unpacked into different variables is not guaranteed.
+        # Once a set is created, you cannot change its items, but you can remove items and add new items.
 
-# Ex : 1.0
+# Ex : 1.0 list
 a, b, c, d = [1, '2', {1,2}, 2.3] # list
 print(a,b,c,d) # o/p: 1 2 {1, 2} 2.3
 
-# Ex : 1.1
+
+# Ex : 1.1 String
     # We can also unpack an iterable which is stored in a variable.
+from collections.abc import Iterable
 v = 'python' # string
 a, b, c, d, e, f = v
 print(a,b,c,d,e,f) # o/p: p y t h o n
+if isinstance(v, Iterable):
+    print(f"{v} String is iterable")  
+else:
+    print(f"{v} String is not iterable")
+# o/p:  
+    # p y t h o n
+    # python String is iterable
 
-# Ex : 1.2
+# Ex : 1.2 # set
 v,o,w,e,l = {'a', 'e', 'i', 'o', 'u'} # set
 print("v : ",v, ", o : ",o, ", w : ",w,", e : ",e,", l : ",l) # o/p: v :  u , o :  e , w :  a , e :  o , l :  i
 
@@ -189,6 +199,62 @@ print("a:",a,"b:",b,"c:",c,"d:",d,"e:",e)
 # o/p:
     # {160, 100, 170, 180}
     # ValueError: not enough values to unpack (expected 5, got 4)
+
+# Ex : 1.6
+x = {100,170,180,160,100} # set
+print(x)
+a,b,c,d = x
+print("a:",a,"b:",b,"c:",c,"d:",d)
+if hasattr(x, '__iter__'):
+    print(f'set {x} is iterable')
+else:
+    print(f'{x} is not iterable')
+# o/p: 
+    # {160, 100, 170, 180}
+    # a: 160 b: 100 c: 170 d: 180
+    # set {160, 100, 170, 180} is iterable
+
+# Ex : 1.7 # tuple
+# x = (1, 1, 2, 3, 5)   # Parentheses are optional
+                        # but always use Parentheses as a standerd practice to avoid ambiguity
+x = 1, 1, 2, 3, 5
+print(x, type(x))
+a,b,c,d,e = x # Unpacking tuple
+print(a,b,c,d,e)
+print("a:",a,"b:",b,"c:",c,"d:",d,"e:",e)
+# o/p:
+    # (1, 1, 2, 3, 5) <class 'tuple'>
+    # 1 1 2 3 5
+    # a: 1 b: 1 c: 2 d: 3 e: 5
+
+# Ex : 1.8 Dictionaries(ordered)
+# duplicate keys will be discarded
+# while unpacking dictionaries {key : values} only "keys" will be unpacked to corresponding variable from left to right
+# Ex : 1.8.1
+a,b = {'mayur': 29, 'priyanka': 29}
+print(a)
+print(b)
+# o/p:
+    # mayur
+    # priyanka
+
+# Ex : 1.8.2
+a = {
+    'mayur': 200,
+    'mayur': 9,
+    'mayur': 100,
+    'priyanka': 29,
+    } # if duplicate keys exists in dictionarie only last key is considered all the keys before last one will be discarded.
+print(a) # o/p : {'mayur': 100, 'priyanka': 29}}
+
+# Ex : 1.8.3
+a,b,c = {
+    'mayur': 29,
+    'priyanka': 29,
+    'mayur': 29,
+    } # ValueError: not enough values to unpack (expected 3, got 2)
+print(a,b,c)
+
 
 
 # Unpacking Operators ( * and ** ) :
