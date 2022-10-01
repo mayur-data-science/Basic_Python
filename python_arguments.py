@@ -141,14 +141,203 @@ def function(b,c, a= 24,): # valid
 
 function(10, 4)
 
+# Ex: 3
+def adder(x,y,z):
+    print("sum:",x+y+z)
+
+adder(5,10,15,20,25)
+# o/p: TypeError: adder() takes 3 positional arguments but 5 were given
+
+###### To solve this problem (*args and **kwargs (Arbitrary Arguments) concept is impotant to learn)######
+
+# Iterable Unpacking: 
+        # Any iterable in python, a list or a tuple is said to have a pack of values.
+        # We can unpack the values inside an iterable into individual variables.
+        
+        
+        # Note: in case of unordered iterables like a set(duplicate elements not allowed), the sequence of values unpacked into different variables is not guaranteed.
+# Ex : 1.0
+a, b, c, d = [1, '2', {1,2}, 2.3]
+print(a,b,c,d) # o/p: 1 2 {1, 2} 2.3
+
+# Ex : 1.1
+    # We can also unpack an iterable which is stored in a variable similarly.
+v = 'python'
+a, b, c, d, e, f = v
+print(a,b,c,d,e,f) # o/p: p y t h o n
+
+# Unpacking Operators ( * and ** ) :
+    # unpacking operators are operators that unpack the values from iterable objects in Python.
+    
+# * (asterisk / star): 
+        # The single asterisk operator * can be used on any iterable(lists,tuples and strings) object that Python provides.
+        
+my_list = [1, 2, 3]
+print(my_list)
+        
+# o/p : [1, 2, 3]
+        # Note how the list is printed, along with the corresponding brackets and commas.
+        
+        # Now, try to prepend the unpacking operator * to the name of your list:
+        
+my_list = [1, 2, 3]
+print(*my_list)
+        
+# o/p: 1 2 3
+        # Instead of a list, print() has taken three separate arguments as the input.
+        # you used the unpacking operator * in function call , instead of in a function definition.
+        # In this case, print() takes all the items of a list as though they were single arguments.
+        # You can also use this method to call your own functions, 
+        # but if your function requires a specific number of arguments, 
+        # then the iterable you unpack must have the same number of arguments.
+
+def my_sum(a, b, c): #  a, b, and c are required parameter.
+    print(a + b + c)
+
+my_list = [1, 2, 3, 4]
+my_sum(*my_list) # 1 2 3 4 # * operator unpack 4 items from the list. 
+
+# o/p: TypeError: my_sum() takes 3 positional arguments but 4 were given
+
+        # need to split a list into three different parts.
+        # The output should show the first value, the last value, and all the values in between.
+        # With the unpacking operator, you can do this in just one line of code:
+        
+my_list = [1, 2, 3, 4, 5, 6]
+a, *b, c = my_list #  The first data from list is assigned to a, the last data to c, and all other values are packed into a new list b
+print(a)
+print(b)
+print(c)
+# o/p:
+    # 1
+    # [2, 3, 4, 5]
+    # 6
+
+# Ex
+my_list = [1, 2, 3, 4, 5, 6]
+a, b, *c = my_list #  The first data from list is assigned to a, the second data to b, and all other values are packed into a new list c
+print(a)
+print(b)
+print(c)
+# o/p: 
+    # 1
+    # 2
+    # [3, 4, 5, 6]
+
+# Ex
+my_first_list = [1, 2, 3]
+my_second_list = [4, 5, 6]
+my_merged_list = [*my_first_list, *my_second_list]
+
+print(my_merged_list)
+
+# o/p :[1, 2, 3, 4, 5, 6]
+
+a = [*"mayur"] # * operator works on any iterable object. It can also be used to unpack a string:
+print(a) # o/p : ['m', 'a', 'y', 'u', 'r']
+
+a = "mayur"
+print(*a) # o/p : m a y u r
+
+a = "mayur"
+print(*a[0],*a[1],*a[2],*a[3],*a[4])
+print(*a[1])
+print(*a[2])
+print(*a[3])
+print(*a[4])
+# o/p:
+        # m a y u r
+        # a
+        # y
+        # u
+        # r
+
+# a = *"mayur" # SyntaxError: can't use starred expression here
+# print(a)
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ** (double  asterisk / double star) :
+        #  the double asterisk operator ** can only be used on "dictionaries".
+
 
 
 # Python Arbitrary Arguments :
-# In this, we use the asterisk (*) to denote this method before the parameter in the function. 
-# This is also called as Python *args. 
-# Python *args allows a function to accept any number of positional arguments 
-# i.e. arguments which are non-keyword arguments, variable-length argument list.
 
-# Remember 'args' is just a notation. We can use any other argument name instead of it.
+# *args :
+    # In this, we use the asterisk (*) to denote that perticular function only accept positional argument in function parameter. 
+    # This is also called as Python *args. 
+    # Python "*args" allows a function to "accept any number of positional arguments" passed while calling function
+    # i.e. arguments which are non-keyword arguments, accepts variable-length(means no argument or less or more argument) while calling function.
 
-# arbitrary arguments come in handy when we don’t know how many arguments are needed in the program at that moment.
+    # Remember 'args' is just a notation. We can use any other argument name instead of it.
+
+# Ex: 1.0
+def adder(*args):   # accepts only positional arguments in the form of tuple
+    print("Tuple:",args)
+
+adder(a=5,b=10,c=15,d=20,e=25) # TypeError: adder() got an unexpected keyword argument 'a'
+
+# Ex: 1.1
+def adder(*args):   # accepts arguments in the form of tuple
+    print("Tuple:",args)
+
+adder(5,10,15,20,25)    # o/p: Tuple: (5, 10, 15, 20, 25)
+    
+# Ex: 1.2
+def adder(*args):   # accepts arguments in the form of tuple
+    # a,b,c,d,e = *args # SyntaxError: can't use starred expression here
+    print("Unpacked data:",*args) # print is also a function  # so we can use  *args
+
+adder(5,10,15,20,25)    # o/p: Unpacked data: 5 10 15 20 25
+
+
+# Ex: 1.3
+def adder(*args): # args = (5,10,15,20,25) # accepts arguments in the form of tuple
+    a,b,c,d,e = args # Unpacking each data from tuple and assign it to respective variable
+    # a,b,c,d,e = *args # SyntaxError: can't use starred expression here
+    # a, b, c, d = args # ValueError: too many values to unpack (expected 4) # values and variables must match
+    # a, b, c, d, e, f = args # ValueError: not enough values to unpack (expected 6, got 5) # values and variables must match
+    print("sum:",a+b+c+d+e)
+
+adder(5,10,15,20,25) # o/p: 75
+
+
+# Ex: 2
+def my_sum_of_list(*args):
+    result = 0
+    for x in args: # for x in (10,20,30,40,50,60,70,80,90) # iterating over each element in tuple
+        result += x
+    return result
+
+list1 = [10, 20, 30]
+list2 = [40, 50]
+list3 = [60, 70, 80, 90]
+
+print(my_sum_of_list(*list1, *list2, *list3)) # unpacking list data first
+# o/p: 450
+
+
+
+
+    # **kwargs :
+        # In this, we use the asterisk (**) to denote that perticular function only accept Keyword argument in function parameter.
+        # This is also called as Python **kwargs.
+        # Python "**kwargs" allows a function to "accept any number of Keyword arguments" passed while calling function
+        # i.e. arguments which are keyword arguments, accepts variable-length(means no argument or less or more argument) while calling function.
+
+# arbitrary arguments come in handy when we don’t know how many arguments needed to pass in the function or method at that moment.
+
+# Ex 1:
+
+
