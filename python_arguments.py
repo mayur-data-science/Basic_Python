@@ -151,20 +151,45 @@ adder(5,10,15,20,25)
 ###### To solve this problem (*args and **kwargs (Arbitrary Arguments) concept is impotant to learn)######
 
 # Iterable Unpacking: 
-        # Any iterable in python, a list or a tuple is said to have a pack of values.
+        # Any iterable in python, a list, tuple, set is said to have a pack of values.
         # We can unpack the values inside an iterable into individual variables.
         
         
         # Note: in case of unordered iterables like a set(duplicate elements not allowed), the sequence of values unpacked into different variables is not guaranteed.
+
 # Ex : 1.0
-a, b, c, d = [1, '2', {1,2}, 2.3]
+a, b, c, d = [1, '2', {1,2}, 2.3] # list
 print(a,b,c,d) # o/p: 1 2 {1, 2} 2.3
 
 # Ex : 1.1
-    # We can also unpack an iterable which is stored in a variable similarly.
-v = 'python'
+    # We can also unpack an iterable which is stored in a variable.
+v = 'python' # string
 a, b, c, d, e, f = v
 print(a,b,c,d,e,f) # o/p: p y t h o n
+
+# Ex : 1.2
+v,o,w,e,l = {'a', 'e', 'i', 'o', 'u'} # set
+print("v : ",v, ", o : ",o, ", w : ",w,", e : ",e,", l : ",l) # o/p: v :  u , o :  e , w :  a , e :  o , l :  i
+
+# Ex : 1.3
+x = {100,500,'s',50} # set
+a,b,c,d = x
+print("a:",a,"b:",b,"c:",c,"d:",d) # o/p: a: 50 b: s c: 100 d: 500
+
+# Ex : 1.4
+x = {100,170,180,160,210} # set
+a,b,c,d,e = x
+print("a:",a,"b:",b,"c:",c,"d:",d,"e:",e) # o/p: a: 160 b: 210 c: 100 d: 180 e: 170
+
+# Ex : 1.5
+x = {100,170,180,160,100} # set with duplicate element (100).
+print(x) # o/p: {160, 100, 170, 180} # only considered one value other one discarded
+a,b,c,d,e = x
+print("a:",a,"b:",b,"c:",c,"d:",d,"e:",e) 
+# o/p:
+    # {160, 100, 170, 180}
+    # ValueError: not enough values to unpack (expected 5, got 4)
+
 
 # Unpacking Operators ( * and ** ) :
     # unpacking operators are operators that unpack the values from iterable objects in Python.
