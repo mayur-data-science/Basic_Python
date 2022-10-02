@@ -17,3 +17,15 @@ def factorial(num):
 num1 = 5
 result = factorial(num1) # calling function # result = 120
 print(result) # 120
+
+# 
+#  sequence pattern
+
+def sum_list(numbers):
+    match numbers:
+        case []:
+            return 0
+        case [first, *rest]:
+            return first + sum_list(rest)
+a=sum_list([4, 5, 9, 17])
+print(a) # o/p : 35
