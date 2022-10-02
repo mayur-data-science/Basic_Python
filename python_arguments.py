@@ -258,8 +258,8 @@ print("a==>",a,"b==>",b,"c==>",c,"d==>",d,"e==>",e,"f==>",f) # o/p: a==> 1 b==> 
 
 #------------------------------------------------------------------------------------------------------------
 # Ex : 1.8 Dictionaries(ordered)
-# duplicate keys will be discarded
-# while unpacking dictionaries {key : values} only "keys" will be unpacked to corresponding variable from left to right
+# duplicate keys will be discarded(if duplicate keys is available while program runs, number of elements in dict will reduce so while unpacking at runtime will give error )
+# while basic unpacking dictionaries {key : values} only "keys" will be unpacked to corresponding variable from left to right
 # Ex : 1.8.1
 a,b = {'mayur': 29, 'priyanka': 29}
 print(a)
@@ -278,7 +278,7 @@ a = {
 print(a) # o/p : {'mayur': 100, 'priyanka': 29}}
 
 # Ex : 1.8.3
-# unpacking may go wrong if duplicate key is present in dictionarie
+# if duplicate keys is available while program is in runing state, number of elements in dict will reduce so while unpacking at runtime will give error.
 a,b,c = {
     'mayur': 29,
     'priyanka': 29,
@@ -377,6 +377,37 @@ print(*a) # o/p : m a y u r
 # a = *"mayur" # SyntaxError: can't use starred expression here
 # print(a)
 
+# Ex : 2
+a = {
+    'mayur': 200,
+    'mayur': 9,
+    'mayur': 100,
+    'priyanka': 29,
+    } # if duplicate keys exists in dictionarie only last key is considered all the keys before last one will be discarded.
+print(*a) # unpacking dictionarie with * , only keys will be unpacked.
+# o/p: mayur priyanka
+
+a = {
+        "nested1": {
+            "mayur": 100,
+            'priyanka': 29,
+        },
+        
+        "nested2": {
+            "mayur": 100,
+            'priyanka': 29,
+        }
+    }
+
+print(*a) # o/p : nested1 nested2
+
+a1 = {1 : "a", 2 : "b"}
+a2 = {3 : "c", 4 : "d"}
+a3 = {5 : "e", 6 : "f"}
+
+d1 = {*a1,*a2,*a3}
+print(d1) # o/p :{1, 2, 3, 4, 5, 6}
+
 #------------------------------------------------------------------------------------------------------------
 
 ### Converting variable-length iterable in single variable into a list # tricky concept
@@ -432,6 +463,16 @@ print(b, type(b))
 # o/p: 
     # ['mayur'] <class 'list'>
     # priyanka <class 'str'>
+
+# *a,*b = {
+#     '2': 200,
+#     '2': 9,
+#     2: 100,
+#     1: 29,
+#     } 
+# print(type(a),type(b))
+# print(a,b)
+# o/p: SyntaxError: multiple starred expressions in assignment
             
             #----------------------------------------------------#
 
@@ -451,8 +492,24 @@ print(b, type(b))
 
 
 
-# ** (double  asterisk / double star) :
+### ** (double  asterisk / double star) :
         #  the double asterisk operator ** can only be used on "dictionaries".
+        # ** unpacking operator unpack key and values also.
+
+# Ex : 1.0
+x = (1,2,1,8,7,9) # Tuple
+print(**x) # o/p : TypeError: print() argument after ** must be a mapping, not tuple
+
+# Ex : 2.0
+a1 = {1 : "a", 2 : "b"}
+print(a1)
+# Ex : 2.1
+a1 = {1 : "a", 2 : "b"}
+a2 = {3 : "c", 4 : "d"}
+a3 = {5 : "e", 6 : "f"}
+
+d2 = {**a1,**a2,**a3}
+print(d2) # o/p : {1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'e', 6: 'f'}
 
 
 
