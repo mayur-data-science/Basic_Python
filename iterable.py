@@ -5,16 +5,17 @@
     # An iterable is mutable if you can change which elements it contains
     
 # list: 
-    # an ordered, mutable collection of elements
+    # an Ordered, mutable collection of elements
 # Ex : 1.0
 a, b, c, d = [1, '2', {1,2}, 2.3] # list
 print(a,b,c,d) # o/p: 1 2 {1, 2} 2.3
 
 
 # dict: 
-    # an unordered, mutable collection of key-value pairs
+    # an Ordered, mutable collection of key-value pairs
+    # As of Python version 3.10.7, dictionaries are "ordered". In Python 3.6 and earlier, dictionaries are unordered.
 # tuple: 
-    # an ordered, immutable collection of elements
+    # an Ordered, immutable collection of elements
 # set: 
     # an unordered, mutable collection of unique elements
     
