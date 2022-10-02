@@ -487,6 +487,9 @@ print(b, type(b))
     # [1, 2, 'a', 8, {'key': 2, 'value': 3}] <class 'list'>
     # 9 <class 'int'>
 
+# Ex : 3.1
+*a, b, c, d = 1, 2, 3 # Packing no values in a (a defaults to []) because b, c, and d are mandatory
+print(a, b, c, d) # o/p: [] 1 2 3
 
 #-------------------------------------------------------------------------------------
 
@@ -502,7 +505,8 @@ print(**x) # o/p : TypeError: print() argument after ** must be a mapping, not t
 
 # Ex : 2.0
 a1 = {1 : "a", 2 : "b"}
-print(a1)
+print(a1) # o/p : {1: 'a', 2: 'b'}
+
 # Ex : 2.1
 a1 = {1 : "a", 2 : "b"}
 a2 = {3 : "c", 4 : "d"}
