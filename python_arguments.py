@@ -1,29 +1,30 @@
 # Python Arguments :
-
-# Parameters: 
+#----------------------------------------------------------------------------------------------------------
+### Parameters: 
         # A parameter is the variable defined within the parentheses during function definition. 
         # Simply they are written when we declare a function. 
 
-# Ex 1
+# Ex : 1
 
 def sum(a,b): # Here a,b are the parameters
     print(a+b)
     
 sum(1,2)
+#----------------------------------------------------------------------------------------------------------
 
-# Arguments:
+### Arguments:
         # An argument is a data that is passed to a function when it is called. 
         # Data might be a callable function, string, int, float, boolean(True or False) as input. 
         # They are written in the function call.
 
-# Ex1:
+# Ex : 1
 
 def sum(a,b):
     print(a+b)
     
 sum(1,2) # Here the values 1,2 are arguments
 
-# Ex2:
+# Ex : 2
 def sum(a,b): 
     print("a is : ", a)
     print("b is : ", b)
@@ -34,24 +35,25 @@ sum(1,True) # passing boolean data
         # a is :  1
         # b is :  True
         # True
+#----------------------------------------------------------------------------------------------------------------
 
-# Positional Arguments :
+### Positional Arguments :
         # Positional Arguments are needed to be included in proper order
         # i.e the first argument is always listed first when the function is called, 
         # second argument needs to be listed second when function is called and so on....
         
-# Ex 1
+# Ex : 1
 def person_name(first_name,second_name):
     print(first_name + second_name)
 	
 person_name("Ram","Babu")   # First name is Ram placed first
                             # Second name is Babu place second while calling a function.
-
-# Keyword Arguments:
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### Keyword Arguments:
         # Keyword Arguments is an argument passed to a function or method which is preceded by a keyword and an equal to sign.
         # The order in keyword Arguments need not to be same as in positional argument.
         # while calling a function we explicitly telling python which argument value goes to which parameters in function declation by keyword names same as given in parameters.
-# Ex1
+# Ex : 1
 
 def person_name(first_name,second_name):
     print(first_name + second_name)
@@ -78,9 +80,9 @@ fruits('apple', b = 'banana', p = 'pineapple')  # two Keyword Argument, one Posi
 # fruits(b = 'banana', p = 'pineapple', 'apple')# SyntaxError: positional argument follows keyword argument.
 # fruits('apple', b = 'banana', 'pineapple') # SyntaxError: positional argument follows keyword argument.
 
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-# Python Default and Non-default Parameters:
+### Python Default and Non-default Parameters:
 
     #   Function parameters have default data assigned to them. (data can be callable function, string, int, float, boolean(True or False) )
     #   This can be done by using the assignment operator (=) in the function parameter. 
@@ -94,7 +96,7 @@ fruits('apple', b = 'banana', p = 'pineapple')  # two Keyword Argument, one Posi
     #        if we provide default argument while calling function, the dafault data will not be utilized from function parameter.(overridding deafult data)
     #        if we dont provide default argument while calling function, the default data will be utilized from function parameter.
 
-# Ex1: 
+# Ex 1: 
 def welcome(fullname, msg = 'Welcome to python!!'): # fullname is Non-Default parameter and msg is Default parameter.
     print('Hey there', fullname + ', ' + msg) # If the msg argument is not provided while calling function, then the default data from the function parameter is utilized.
 
@@ -108,7 +110,8 @@ welcome('Zack', 'How have you been?') # 2nd argument data passed as a string, we
     # Hey there Zack, How have you been?
 
 
-# Ex 2: default parameter having callable function.
+# Ex: 2
+# default parameter having callable function.
 def add_str():
     return "You Are Awesome"
 
@@ -128,7 +131,7 @@ welcome('Zack',28)
     # Hey there Zack, Your age is 28
 
 
-# Ex 2
+# Ex: 3
     # Non-default arguments, cannot be followed by default arguments.
 
 # def function(a = 24, b, c): # SyntaxError: non-default argument follows default argument
@@ -141,28 +144,30 @@ def function(b,c, a= 24,): # valid
 
 function(10, 4)
 
-# Ex: 3
+# Ex: 4
 def adder(x,y,z):
     print("sum:",x+y+z)
 
 adder(5,10,15,20,25)
 # o/p: TypeError: adder() takes 3 positional arguments but 5 were given
 
+#--------------------------------------------------------------------------------------------------------------------------------
 ###### To solve this problem (*args and **kwargs (Arbitrary Arguments) concept is impotant to learn)######
+#--------------------------------------------------------------------------------------------------------------------------------
 
-# Iterable Unpacking: 
+###Iterable Unpacking: 
         # Any iterable in python, a list(ordered), dict(ordered), tuple(ordered), set(unordered) is said to have a pack of values.(String is also iterable object)
         # We can unpack the values from an iterable into a individual variables.
         
         # As of Python version 3.10.7, dictionaries are "ordered". In Python 3.6 and earlier, dictionaries are unordered.
         # Note: in case of unordered iterables like a set(duplicate elements not allowed), the sequence of values unpacked into different variables is not guaranteed.
         # Once a set is created, you cannot change its items, but you can remove items and add new items.
-
+#------------------------------------------------------------------------------------------------------------
 # Ex : 1.0 list
 a, b, c, d = [1, '2', {1,2}, 2.3] # list
 print(a,b,c,d) # o/p: 1 2 {1, 2} 2.3
 
-
+#--------------------------------------------------------------------------------------------------------------
 # Ex : 1.1 String
     # We can also unpack an iterable which is stored in a variable.
 from collections.abc import Iterable
@@ -176,7 +181,7 @@ else:
 # o/p:  
     # p y t h o n
     # python String is iterable
-
+#---------------------------------------------------------------------------------------------------------------------
 # Ex : 1.2 # set
 v,o,w,e,l = {'a', 'e', 'i', 'o', 'u'} # set
 print("v : ",v, ", o : ",o, ", w : ",w,", e : ",e,", l : ",l) # o/p: v :  u , o :  e , w :  a , e :  o , l :  i
@@ -213,7 +218,7 @@ else:
     # {160, 100, 170, 180}
     # a: 160 b: 100 c: 170 d: 180
     # set {160, 100, 170, 180} is iterable
-
+#--------------------------------------------------------------------------------------------------------------
 # Ex : 1.7 # tuple
 # x = (1, 1, 2, 3, 5)   # Parentheses are optional
                         # but always use Parentheses as a standerd practice to avoid ambiguity
@@ -226,7 +231,7 @@ print("a:",a,"b:",b,"c:",c,"d:",d,"e:",e)
     # (1, 1, 2, 3, 5) <class 'tuple'>
     # 1 1 2 3 5
     # a: 1 b: 1 c: 2 d: 3 e: 5
-
+#------------------------------------------------------------------------------------------------------------
 # Ex : 1.8 Dictionaries(ordered)
 # duplicate keys will be discarded
 # while unpacking dictionaries {key : values} only "keys" will be unpacked to corresponding variable from left to right
@@ -255,7 +260,7 @@ a,b,c = {
     } # ValueError: not enough values to unpack (expected 3, got 2)
 print(a,b,c)
 
-
+#---------------------------------------------------------------------------------------------------------------------------
 
 # Unpacking Operators ( * and ** ) :
     # unpacking operators are operators that unpack the values from iterable objects in Python.
