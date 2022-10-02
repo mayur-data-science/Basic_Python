@@ -1,5 +1,7 @@
-# Python Arguments :
+### Python Arguments :
+
 #----------------------------------------------------------------------------------------------------------
+
 ### Parameters: 
         # A parameter is the variable defined within the parentheses during function definition. 
         # Simply they are written when we declare a function. 
@@ -59,11 +61,14 @@ def person_name(first_name,second_name):
     print(first_name + second_name)
 
 person_name(second_name="Babu",first_name="Ram") # Here we are explicitly assigning the value. # order dosent matter
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# Positional Arguments & Keyword Arguments in same function:
+### Positional Arguments & Keyword Arguments in same function:
+        
         # if we specify positional argument and  Keyword Arguments in same function its mandatory that 
         # we must specify "positional Arguments" "first" and then specify Keyword Arguments.
         # other wise we will get syntaxError.
+# Ex : 1
 
 def fruits(a, b, p): # Non-default Parameters. # mandatory to pass 3 argument while calling this function.
     print('We have', a+ ',', b+ ' and', p+ ' at our store.')
@@ -115,7 +120,7 @@ welcome('Zack', 'How have you been?') # 2nd argument data passed as a string, we
 def add_str():
     return "You Are Awesome"
 
-def welcome(fullname, msg = add_str): # fullname is positional parameter and msg is default parameter which is callable function.
+def welcome(fullname, msg = add_str): # fullname is positional parameter and msg is default parameter having dafult data which is callable function.
     if callable(msg) == True:
         print("Hey there {0}, {1}".format(fullname, msg()))
     else:
@@ -155,12 +160,12 @@ adder(5,10,15,20,25)
 ###### To solve this problem (*args and **kwargs (Arbitrary Arguments) concept is impotant to learn)######
 #--------------------------------------------------------------------------------------------------------------------------------
 
-###Iterable Unpacking: 
+### Iterable Unpacking: 
         # Any iterable in python, a list(ordered), dict(ordered), tuple(ordered), set(unordered) is said to have a pack of values.(String is also iterable object)
         # We can unpack the values from an iterable into a individual variables.
         
         # As of Python version 3.10.7, dictionaries are "ordered". In Python 3.6 and earlier, dictionaries are unordered.
-        # Note: in case of unordered iterables like a set(duplicate elements not allowed), the sequence of values unpacked into different variables is not guaranteed.
+        # Note: in case of unordered iterables like a set(duplicate elements not considered), the sequence of values unpacked into different variables is not guaranteed.
         # Once a set is created, you cannot change its items, but you can remove items and add new items.
 #------------------------------------------------------------------------------------------------------------
 # Ex : 1.0 list
@@ -168,6 +173,20 @@ a, b, c, d = [1, '2', {1,2}, 2.3] # list
 print(a,b,c,d) # o/p: 1 2 {1, 2} 2.3
 
 #--------------------------------------------------------------------------------------------------------------
+# Ex : 1.0
+a = "mayur"
+print(a[0],a[1],a[2],a[3],a[4])
+print(a[1])
+print(a[2])
+print(a[3])
+print(a[4])
+# o/p: 
+    # m a y u r
+    # a
+    # y
+    # u
+    # r
+
 # Ex : 1.1 String
     # We can also unpack an iterable which is stored in a variable.
 from collections.abc import Iterable
@@ -177,12 +196,13 @@ print(a,b,c,d,e,f) # o/p: p y t h o n
 if isinstance(v, Iterable):
     print(f"{v} String is iterable")  
 else:
-    print(f"{v} String is not iterable")
+    print(f"{v} Int is not iterable")
 # o/p:  
     # p y t h o n
     # python String is iterable
-#---------------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------------------------------------------
 # Ex : 1.2 # set
+# in case of unordered iterables like a set(duplicate elements not considered), the sequence of values unpacked into different variables is not guaranteed.
 v,o,w,e,l = {'a', 'e', 'i', 'o', 'u'} # set
 print("v : ",v, ", o : ",o, ", w : ",w,", e : ",e,", l : ",l) # o/p: v :  u , o :  e , w :  a , e :  o , l :  i
 
@@ -221,7 +241,7 @@ else:
 #--------------------------------------------------------------------------------------------------------------
 # Ex : 1.7 # tuple
 # x = (1, 1, 2, 3, 5)   # Parentheses are optional
-                        # but always use Parentheses as a standerd practice to avoid ambiguity
+                        # but always use Parentheses as a standard practice to avoid ambiguity
 x = 1, 1, 2, 3, 5
 print(x, type(x))
 a,b,c,d,e = x # Unpacking tuple
@@ -231,6 +251,11 @@ print("a:",a,"b:",b,"c:",c,"d:",d,"e:",e)
     # (1, 1, 2, 3, 5) <class 'tuple'>
     # 1 1 2 3 5
     # a: 1 b: 1 c: 2 d: 3 e: 5
+# Ex : 1.7.1
+x = (1,2,"a",8,{ "key" : 2, "value" : 3 },9) # dictionarie in tuple.
+a, b, c, d, e, f = x
+print("a==>",a,"b==>",b,"c==>",c,"d==>",d,"e==>",e,"f==>",f) # o/p: a==> 1 b==> 2 c==> a d==> 8 e==> {'key': 2, 'value': 3} f==> 9
+
 #------------------------------------------------------------------------------------------------------------
 # Ex : 1.8 Dictionaries(ordered)
 # duplicate keys will be discarded
@@ -253,6 +278,7 @@ a = {
 print(a) # o/p : {'mayur': 100, 'priyanka': 29}}
 
 # Ex : 1.8.3
+# unpacking may go wrong if duplicate key is present in dictionarie
 a,b,c = {
     'mayur': 29,
     'priyanka': 29,
@@ -267,7 +293,8 @@ print(a,b,c)
     
 # * (asterisk / star): 
         # The single asterisk operator * can be used on any iterable(lists,tuples and strings) object that Python provides.
-        
+
+# Ex : 1.0       
 my_list = [1, 2, 3]
 print(my_list)
         
@@ -284,8 +311,8 @@ print(*my_list)
         # you used the unpacking operator * in function call , instead of in a function definition.
         # In this case, print() takes all the items of a list as though they were single arguments.
         # You can also use this method to call your own functions, 
-        # but if your function requires a specific number of arguments, 
-        # then the iterable you unpack must have the same number of arguments.
+        # but if your function requires a specific number of parameter, 
+        # then the iterable you unpack must have the same number of arguments in function call.
 
 def my_sum(a, b, c): #  a, b, and c are required parameter.
     print(a + b + c)
@@ -295,10 +322,11 @@ my_sum(*my_list) # 1 2 3 4 # * operator unpack 4 items from the list.
 
 # o/p: TypeError: my_sum() takes 3 positional arguments but 4 were given
 
-        # need to split a list into three different parts.
-        # The output should show the first value, the last value, and all the values in between.
-        # With the unpacking operator, you can do this in just one line of code:
-        
+# if we need to split a list into three different parts.
+# The output should show the first value, the last value, and all the values in between.
+# With the unpacking operator, you can do this in just one line of code:
+
+# Ex : 1.1        
 my_list = [1, 2, 3, 4, 5, 6]
 a, *b, c = my_list #  The first data from list is assigned to a, the last data to c, and all other values are packed into a new list b
 print(a)
@@ -309,7 +337,7 @@ print(c)
     # [2, 3, 4, 5]
     # 6
 
-# Ex
+# Ex : 1.2
 my_list = [1, 2, 3, 4, 5, 6]
 a, b, *c = my_list #  The first data from list is assigned to a, the second data to b, and all other values are packed into a new list c
 print(a)
@@ -320,7 +348,7 @@ print(c)
     # 2
     # [3, 4, 5, 6]
 
-# Ex
+# Ex : 1.3 
 my_first_list = [1, 2, 3]
 my_second_list = [4, 5, 6]
 my_merged_list = [*my_first_list, *my_second_list]
@@ -329,24 +357,22 @@ print(my_merged_list)
 
 # o/p :[1, 2, 3, 4, 5, 6]
 
+# Ex : 1.0
+x = (1,2,1,8,7,9) # Tuple
+print(x) # o/p : (1, 2, 1, 8, 7, 9)
+print(*x) # o/p: 1 2 1 8 7 9
+
+# Ex : 1.1
+x = (1,2,"a",8,{ "key" : 2, "value" : 3 },9) # dictionarie in tuple
+print(x) # o/p : (1, 2, 'a', 8, {'key': 2, 'value': 3}, 9)
+print(*x) # o/p : 1 2 a 8 {'key': 2, 'value': 3} 9 
+
+
 a = [*"mayur"] # * operator works on any iterable object. It can also be used to unpack a string:
 print(a) # o/p : ['m', 'a', 'y', 'u', 'r']
 
 a = "mayur"
 print(*a) # o/p : m a y u r
-
-a = "mayur"
-print(*a[0],*a[1],*a[2],*a[3],*a[4])
-print(*a[1])
-print(*a[2])
-print(*a[3])
-print(*a[4])
-# o/p:
-        # m a y u r
-        # a
-        # y
-        # u
-        # r
 
 # a = *"mayur" # SyntaxError: can't use starred expression here
 # print(a)
