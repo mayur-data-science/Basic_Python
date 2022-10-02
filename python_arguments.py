@@ -173,7 +173,7 @@ a, b, c, d = [1, '2', {1,2}, 2.3] # list
 print(a,b,c,d) # o/p: 1 2 {1, 2} 2.3
 
 #--------------------------------------------------------------------------------------------------------------
-# Ex : 1.0
+# Ex : 1.0 # accessing each character of string
 a = "mayur"
 print(a[0],a[1],a[2],a[3],a[4])
 print(a[1])
@@ -290,7 +290,7 @@ print(a,b,c)
 
 # Unpacking Operators ( * and ** ) :
     # unpacking operators are operators that unpack the values from iterable objects in Python.
-    
+#---------------------------------------------------------------------------------------------------------------------------    
 # * (asterisk / star): 
         # The single asterisk operator * can be used on any iterable(lists,tuples and strings) object that Python provides.
 
@@ -365,7 +365,7 @@ print(*x) # o/p: 1 2 1 8 7 9
 # Ex : 1.1
 x = (1,2,"a",8,{ "key" : 2, "value" : 3 },9) # dictionarie in tuple
 print(x) # o/p : (1, 2, 'a', 8, {'key': 2, 'value': 3}, 9)
-print(*x) # o/p : 1 2 a 8 {'key': 2, 'value': 3} 9 
+print(*x) # o/p : 1 2 a 8 {'key': 2, 'value': 3} 9
 
 
 a = [*"mayur"] # * operator works on any iterable object. It can also be used to unpack a string:
@@ -377,15 +377,77 @@ print(*a) # o/p : m a y u r
 # a = *"mayur" # SyntaxError: can't use starred expression here
 # print(a)
 
+#------------------------------------------------------------------------------------------------------------
+
+### Converting variable-length iterable in single variable into a list # tricky concept
+# Ex : 1
+
+# When you use the unpacking operator with single variable assignment, Python requires that your resulting variable is either a list or a tuple.
+
+# *a = "RealPython"
+# print(a) # SyntaxError: starred assignment target must be in a list or tuple
+
+# if you want to unpack all items of the variable-length iterable into a single variable, a, then you need to add the comma (,) without naming a second variable.
+# Python will then unpack all items into the first named variable, which is a list.
+# here we have to use tuple unpacking in combination with the unpacking operator *.
+
+*a, = "RealPython" # There’s the unpacking operator *, followed by a variable, and comma, and an assignment.
+print(a) # o/p : ['R', 'e', 'a', 'l', 'P', 'y', 't', 'h', 'o', 'n']
+
+# The comma after the "a" does the trick.
+# With the trailing comma, you have defined a tuple with only one named variable, a, which is the list
+# Where is the tuple ????
+    # You never get to see the tuple that Python creates in this operation, because you use tuple unpacking in combination with the unpacking operator *.
+
+# If you name a second variable on the left-hand side of the assignment, 
+# Python will assign the last character of the string to the second variable, 
+# while collecting all remaining characters in the list a
+
+*a, b = "RealPython"
+print(a, type(a))
+print(b, type(b))
+# o/p:
+    # ['R', 'e', 'a', 'l', 'P', 'y', 't', 'h', 'o'] <class 'list'>
+    # n <class 'str'>
+            
+            #----------------------------------------------------#
+
+# Ex : 2
+*a, = {
+    'mayur': 200,
+    'mayur': 9,
+    'mayur': 100,
+    'priyanka': 29,
+    }
+print(a, type(a)) # o/p: ['mayur', 'priyanka'] <class 'list'>
+
+*a,b = {
+    'mayur': 200,
+    'mayur': 9,
+    'mayur': 100,
+    'priyanka': 29,
+    }
+print(a, type(a))
+print(b, type(b))
+# o/p: 
+    # ['mayur'] <class 'list'>
+    # priyanka <class 'str'>
+            
+            #----------------------------------------------------#
+
+# Ex : 3
+*a, = (1,2,"a",8,{ "key" : 2, "value" : 3 },9)
+print(a, type(a)) # o/p: [1, 2, 'a', 8, {'key': 2, 'value': 3}, 9] <class 'list'>
+
+*a,b = (1,2,"a",8,{ "key" : 2, "value" : 3 },9)
+print(a, type(a))
+print(b, type(b))
+# o/p:
+    # [1, 2, 'a', 8, {'key': 2, 'value': 3}] <class 'list'>
+    # 9 <class 'int'>
 
 
-
-
-
-
-
-
-
+#-------------------------------------------------------------------------------------
 
 
 
