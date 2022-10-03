@@ -16,7 +16,6 @@
         
         # operation that consists of assigning an iterable of values of right hand side to a left hand side
         # {set} or dict {key:values} of variables in a single assignment statement is not allowed.
-        
         # Ex : 0.0
             # {a,b,c} = 1,2,3 # SyntaxError: cannot assign to set display here. Maybe you meant '==' instead of '='?
             # print("a:",a,"b:",b,"c:",c)
