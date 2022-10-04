@@ -377,30 +377,30 @@ print(b, type(b))
         # n <class 'str'>
 
 # Ex : 3
-*a, = {
+*a, = {     # Converting variable-length iterable in single variable a of list type.
     'mayur': 200,
     'mayur': 9,
     'mayur': 100,
     'priyanka': 29,
     }
 print(a, type(a)) # o/p: ['mayur', 'priyanka'] <class 'list'>
+
 # print(a.items())	# AttributeError: 'list' object has no attribute 'items'
 
 # Ex : 4
 
-*a,b = {
+*a,b = {    # Converting variable-length iterable in single variable a of list type.
+            # Python will assign the last character of the string type to the second variable b
     'mayur': 200,
     'mayur': 9,
     'mayur': 100,
     'priyanka': 29,
     }
-print(a, type(a))
-print(b, type(b))
-# print(a.items())	# AttributeError: 'list' object has no attribute 'items'
+print(a, type(a))   # o/p: ['mayur'] <class 'list'>
+print(b, type(b))   # o/p: priyanka <class 'str'>
+
+# print(a.items())	# o/p: AttributeError: 'list' object has no attribute 'items'
 # print(b.items())	# AttributeError: 'str' object has no attribute 'items'
-    # o/p: 
-        # ['mayur'] <class 'list'>
-        # priyanka <class 'str'>
 
 # Ex : 5
 
@@ -417,20 +417,73 @@ print(b, type(b))
 
 # Ex : 6
 
-*a, = (1,2,"a",8,{ "key" : 2, "value" : 3 },9)
+*a, = (1,2,"a",8,{ "key1" : 2, "key2" : 3 },9) # Converting variable-length iterable in single variable a of list type.
 print(a, type(a)) # o/p: [1, 2, 'a', 8, {'key': 2, 'value': 3}, 9] <class 'list'>
 
+# a.items() # o/p: AttributeError: 'list' object has no attribute 'items'
+
+key1, key2 = a[4]	# Unpack keys
+print(key1,key2)    # o/p: key1 key2
+
+value1, value2 = a[4].values() # Unpack values
+print(value1,value2) # o/p: 2 3
+
+key1_value1, key2_value2 = a[4].items()	# Unpacking key-value pairs (by default in tuple)
+print(key1_value1,key2_value2)  # o/p: ('key1', 2) ('key2', 3)
+
+x, y = key1_value1
+print(x,y) # o/p: key1 2
+w, z = key2_value2
+print(w,z) # o/p: key2 3
+
+
 # Ex : 7
-*a,b = (1,2,"a",8,{ "key" : 2, "value" : 3 },9)
-print(a, type(a))
-print(b, type(b))
-# o/p:
-    # [1, 2, 'a', 8, {'key': 2, 'value': 3}] <class 'list'>
-    # 9 <class 'int'>
+
+*a,b = (1,2,"a",8,9,
+        {   
+            "key1" : 2, 
+            "key2" : 3 
+        }
+        )  # Converting variable-length iterable in single variable a of list type.
+            # Python will assign the last character of the dict type to the second variable b, because b is mandatory
+
+print(a, type(a))   # o/p: [1, 2, 'a', 8, 9] <class 'list'>
+print(b, type(b)) 	# o/p: {'key1': 2, 'key2': 3} <class 'dict'>
+
+key1, key2 = b  # Unpack keys
+print(key1,key2) # o/p: key1 key2
+
+value1, value2 = b.values() # Unpack values
+print(value1,value2) # o/p: 2 3
+
+key1_value1, key2_value2= b.items() # Unpacking key-value pairs
+print(key1_value1, key2_value2) # o/p: ('key1', 2) ('key2', 3)
 
 # Ex : 8
+
+*a,b = (1,2,"a",8,9,
+        {   
+            "key1" : 2, 
+            "key2" : 3 
+        }
+        )  # Converting variable-length iterable in single variable a of list type.
+            # Python will assign the last character of the dict type to the second variable b, because b is mandatory
+
+print(a, type(a))   # o/p: [1, 2, 'a', 8, 9] <class 'list'>
+print(b, type(b)) 	# o/p: {'key1': 2, 'key2': 3} <class 'dict'>
+
+key1_value1, key2_value2 = b.items()    # Unpacking key-value pairs in tuple
+print(key1_value1, key2_value2) # o/p: ('key1', 2) ('key2', 3)
+
+key1, value1 = key1_value1  # unpacking data key and value from tuple
+key2, value2 = key2_value2  # unpacking data key and value from tuple
+print(key1,key2) # o/p: key1 key2
+print(value1,value2) # o/p: 2 3
+
+
+# Ex : 9
 
 *a, b, c, d = 1, 2, 3 # Packing no values in a (a defaults to empty []) because b, c, and d are mandatory
 print(a, b, c, d) # o/p: [] 1 2 3
 
-#-------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------
