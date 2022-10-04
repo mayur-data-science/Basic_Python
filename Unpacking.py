@@ -167,8 +167,22 @@ a,b,c = {
     } # ValueError: not enough values to unpack (expected 3, got 2)
 print(a,b,c)
 
+# Ex : 1.4
+    # Unpacking dictionaries (keys, values, and items)
 
-#-----------------------------------------------------------------------------------------------------#
+my_dict = {'one': 1, 'two':2, 'three': 3}
+
+a, b, c = my_dict # Unpack keys
+print(type(a),":",a,":",type(b),b,":",type(c),c) # o/p: <class 'str'> : one <class 'str'> : two <class 'str'> : three
+
+a, b, c = my_dict.values() # Unpack values
+print(type(a),":",a,":",type(b),b,":",type(c),c) # o/p: <class 'int'> : 1 <class 'int'> : 2 <class 'int'> : 3
+
+a, b, c = my_dict.items() # Unpacking key-value pairs
+print(type(a),":",a,":",type(b),b,":",type(c),c) # o/p: <class 'tuple'> : ('one', 1) <class 'tuple'> : ('two', 2) <class 'tuple'> : ('three', 3)
+
+
+#----------------------------------------------------------------------------------------------------------------------------------------------#
 
 #------------------------#
 # Unpacking Set(ordered) :
@@ -218,3 +232,16 @@ else:
         # {160, 100, 170, 180}
         # a: 160 b: 100 c: 170 d: 180
         # set {160, 100, 170, 180} is iterable
+        
+#----------------------------------------------------------------------------------------------------------------#
+
+#----------------------#
+# Unpacking generators :
+#----------------------#
+
+gen = (2 ** x for x in range(3))
+print(gen)  # o/p : <generator object <genexpr> at 0x0000029804C242E0>
+print(type(gen)) # o/p: <class 'generator'>
+a, b, c = gen # Unpacking generators
+print(a,b,c) # o/p: 1 2 4
+print(type(a),type(b),type(c)) # o/p: <class 'int'> <class 'int'> <class 'int'>
