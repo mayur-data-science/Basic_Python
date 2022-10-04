@@ -245,3 +245,192 @@ print(type(gen)) # o/p: <class 'generator'>
 a, b, c = gen # Unpacking generators
 print(a,b,c) # o/p: 1 2 4
 print(type(a),type(b),type(c)) # o/p: <class 'int'> <class 'int'> <class 'int'>
+
+#----------------------------------------------------------------------------------------------------------------#
+
+                            #----------------------------------#
+                            # Unpacking Operators ( * and ** ) #
+                            #----------------------------------#
+
+        # unpacking operators are operators that unpack the values from iterable(lists,tuples and strings) objects in Python.
+
+#---------------------------------------#        
+# Unpacking Operator * (asterisk / star)#
+#---------------------------------------#
+
+        # The single asterisk operator * can be used on any iterable(lists,tuples and strings) object that Python provides.
+
+
+#-----------#
+# * on List :
+#-----------#
+
+# Ex : 1.0
+
+my_list = [1, 2, 3]
+print(my_list) # o/p : [1, 2, 3]
+
+        # Note how the list is printed, along with the corresponding brackets and commas.
+        
+        # Now, try to prepend the unpacking operator * to the name of your list:
+
+my_list = [1, 2, 3]
+print(*my_list) # o/p: 1 2 3
+
+        # Instead of a list, print() has taken three separate arguments as the input.
+        # you used the unpacking operator * in function call , instead of in a function definition.
+        # In this case, print() takes all the items of a list as though they were single arguments.
+        # You can also use this method to call your own functions, 
+        # but if your function requires a specific number of parameter, 
+        # then the iterable you unpack must have the same number of arguments in function call.
+
+# Ex : 2
+
+def my_sum(a, b, c): #  a, b, and c are required parameter.
+    print(a + b + c)
+
+my_list = [1, 2, 3, 4]
+my_sum(*my_list)    # 1 2 3 4 # * operator unpack 4 items from the list. 
+                    # o/p: TypeError: my_sum() takes 3 positional arguments but 4 were given
+
+# if we need to split a list into three different parts.
+# The output should show the first value, the last value, and all the values in between.
+# With the unpacking operator, you can do this in just one line of code:
+
+# Ex : 3
+
+my_list = [1, 2, 3, 4, 5, 6]
+a, *b, c = my_list  # The first data from list is assigned to a, the last data to c, 
+                    # and all other values are "packed" into a new list b
+
+print(a)
+print(b)
+print(c)
+    # o/p:
+        # 1
+        # [2, 3, 4, 5]
+        # 6
+
+# Ex : 4
+
+my_list = [1, 2, 3, 4, 5, 6]
+a, b, *c = my_list  #  The first data from list is assigned to a, the second data to b, 
+                    # and all other values are "packed" into a new list c
+print(a)
+print(b)
+print(c)
+    # o/p: 
+        # 1
+        # 2
+        # [3, 4, 5, 6]
+
+# Ex : 5
+
+my_first_list = [1, 2, 3]
+my_second_list = [4, 5, 6]
+my_merged_list = [*my_first_list, *my_second_list]
+
+print(my_merged_list) # o/p :[1, 2, 3, 4, 5, 6]
+
+
+
+#-----------------------------#
+# Packing With the * Operator :
+#-----------------------------#
+
+        # The * operator is known, in this context, as the tuple (or iterable) unpacking operator.
+        # It extends the unpacking functionality to allow us to collect or pack multiple values in a single variable.
+        
+
+        # Converting variable-length iterable in single variable into a list # tricky concept
+# Ex : 1
+
+        # When you use the unpacking operator with single variable assignment, 
+        # Python requires that your resulting variable is either a list or a tuple.
+
+        # *a = "RealPython"
+        # print(a) # SyntaxError: starred assignment target must be in a list or tuple
+
+        # if you want to unpack all items of the variable-length iterable into a single variable, a, 
+        # then you need to add the comma (,) without naming a second variable.
+        # Python will then unpack all items into the first named variable, which is a list.
+        # here we have to use tuple unpacking in combination with the unpacking operator *.
+
+*a, = "RealPython"  # There’s the unpacking operator *, followed by a variable, and comma, and an assignment.
+print(a)    # o/p : ['R', 'e', 'a', 'l', 'P', 'y', 't', 'h', 'o', 'n']
+
+        # The comma after the "a" does the trick.
+        # With the trailing comma, you have defined a tuple with only one named variable, a, which is the list
+        # Where is the tuple ????
+            # You never get to see the tuple that Python creates in this operation,
+            # because you use tuple unpacking in combination with the unpacking operator *.
+# Ex : 2
+        # If you name a second variable on the left-hand side of the assignment, 
+        # Python will assign the last character of the string to the second variable, 
+        # while collecting all remaining characters in the list a
+
+*a, b = "RealPython"
+print(a, type(a))
+print(b, type(b))
+    # o/p:
+        # ['R', 'e', 'a', 'l', 'P', 'y', 't', 'h', 'o'] <class 'list'>
+        # n <class 'str'>
+
+# Ex : 3
+*a, = {
+    'mayur': 200,
+    'mayur': 9,
+    'mayur': 100,
+    'priyanka': 29,
+    }
+print(a, type(a)) # o/p: ['mayur', 'priyanka'] <class 'list'>
+# print(a.items())	# AttributeError: 'list' object has no attribute 'items'
+
+# Ex : 4
+
+*a,b = {
+    'mayur': 200,
+    'mayur': 9,
+    'mayur': 100,
+    'priyanka': 29,
+    }
+print(a, type(a))
+print(b, type(b))
+# print(a.items())	# AttributeError: 'list' object has no attribute 'items'
+# print(b.items())	# AttributeError: 'str' object has no attribute 'items'
+    # o/p: 
+        # ['mayur'] <class 'list'>
+        # priyanka <class 'str'>
+
+# Ex : 5
+
+    # *a,*b = {     # multiple starred expressions in assignment is not allowed
+    #     '2': 200,
+    #     '2': 9,
+    #     2: 100,
+    #     1: 29,
+    #     } 
+    # print(type(a),type(b))
+    # print(a,b)
+    # o/p: SyntaxError: multiple starred expressions in assignment
+
+
+# Ex : 6
+
+*a, = (1,2,"a",8,{ "key" : 2, "value" : 3 },9)
+print(a, type(a)) # o/p: [1, 2, 'a', 8, {'key': 2, 'value': 3}, 9] <class 'list'>
+
+# Ex : 7
+*a,b = (1,2,"a",8,{ "key" : 2, "value" : 3 },9)
+print(a, type(a))
+print(b, type(b))
+# o/p:
+    # [1, 2, 'a', 8, {'key': 2, 'value': 3}] <class 'list'>
+    # 9 <class 'int'>
+
+# Ex : 8
+
+*a, b, c, d = 1, 2, 3 # Packing no values in a (a defaults to empty []) because b, c, and d are mandatory
+print(a, b, c, d) # o/p: [] 1 2 3
+
+#-------------------------------------------------------------------------------------
