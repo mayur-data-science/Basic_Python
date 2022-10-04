@@ -293,37 +293,6 @@ my_list = [1, 2, 3, 4]
 my_sum(*my_list)    # 1 2 3 4 # * operator unpack 4 items from the list. 
                     # o/p: TypeError: my_sum() takes 3 positional arguments but 4 were given
 
-# if we need to split a list into three different parts.
-# The output should show the first value, the last value, and all the values in between.
-# With the unpacking operator, you can do this in just one line of code:
-
-# Ex : 3
-
-my_list = [1, 2, 3, 4, 5, 6]
-a, *b, c = my_list  # The first data from list is assigned to a, the last data to c, 
-                    # and all other values are "packed" into a new list b
-
-print(a)
-print(b)
-print(c)
-    # o/p:
-        # 1
-        # [2, 3, 4, 5]
-        # 6
-
-# Ex : 4
-
-my_list = [1, 2, 3, 4, 5, 6]
-a, b, *c = my_list  #  The first data from list is assigned to a, the second data to b, 
-                    # and all other values are "packed" into a new list c
-print(a)
-print(b)
-print(c)
-    # o/p: 
-        # 1
-        # 2
-        # [3, 4, 5, 6]
-
 # Ex : 5
 
 my_first_list = [1, 2, 3]
@@ -377,6 +346,38 @@ print(b, type(b))
         # n <class 'str'>
 
 # Ex : 3
+
+    # if we need to split a list into three different parts.
+    # The output should show the first value, the last value, and all the values in between.
+    # With the unpacking operator, you can do this in just one line of code:
+
+my_list = [1, 2, 3, 4, 5, 6]
+a, *b, c = my_list  # The first data from list is assigned to a, the last data to c, 
+                    # and all other values are "packed" into a new list b
+
+print(a)
+print(b)
+print(c)
+    # o/p:
+        # 1
+        # [2, 3, 4, 5]
+        # 6
+
+# Ex : 4
+
+my_list = [1, 2, 3, 4, 5, 6]
+a, b, *c = my_list  #  The first data from list is assigned to a, the second data to b, 
+                    # and all other values are "packed" into a new list c
+print(a)
+print(b)
+print(c)
+    # o/p: 
+        # 1
+        # 2
+        # [3, 4, 5, 6]
+
+# Ex : 6
+
 *a, = {     # Converting variable-length iterable in single variable a of list type.
     'mayur': 200,
     'mayur': 9,
@@ -387,10 +388,11 @@ print(a, type(a)) # o/p: ['mayur', 'priyanka'] <class 'list'>
 
 # print(a.items())	# AttributeError: 'list' object has no attribute 'items'
 
-# Ex : 4
+# Ex : 7
 
 *a,b = {    # Converting variable-length iterable in single variable a of list type.
-            # Python will assign the last character of the string type to the second variable b
+            # Python will assign the last character of the string type to the second variable b and 
+            # reamining packed into "a" of list type. 
     'mayur': 200,
     'mayur': 9,
     'mayur': 100,
@@ -402,7 +404,7 @@ print(b, type(b))   # o/p: priyanka <class 'str'>
 # print(a.items())	# o/p: AttributeError: 'list' object has no attribute 'items'
 # print(b.items())	# AttributeError: 'str' object has no attribute 'items'
 
-# Ex : 5
+# Ex : 8
 
     # *a,*b = {     # multiple starred expressions in assignment is not allowed
     #     '2': 200,
@@ -415,7 +417,7 @@ print(b, type(b))   # o/p: priyanka <class 'str'>
     # o/p: SyntaxError: multiple starred expressions in assignment
 
 
-# Ex : 6
+# Ex : 9
 
 *a, = (1,2,"a",8,{ "key1" : 2, "key2" : 3 },9) # Converting variable-length iterable in single variable a of list type.
 print(a, type(a)) # o/p: [1, 2, 'a', 8, {'key': 2, 'value': 3}, 9] <class 'list'>
@@ -437,7 +439,7 @@ w, z = key2_value2
 print(w,z) # o/p: key2 3
 
 
-# Ex : 7
+# Ex : 10
 
 *a,b = (1,2,"a",8,9,
         {   
@@ -459,7 +461,7 @@ print(value1,value2) # o/p: 2 3
 key1_value1, key2_value2= b.items() # Unpacking key-value pairs
 print(key1_value1, key2_value2) # o/p: ('key1', 2) ('key2', 3)
 
-# Ex : 8
+# Ex : 11
 
 *a,b = (1,2,"a",8,9,
         {   
@@ -481,7 +483,7 @@ print(key1,key2) # o/p: key1 key2
 print(value1,value2) # o/p: 2 3
 
 
-# Ex : 9
+# Ex : 12
 
 *a, b, c, d = 1, 2, 3 # Packing no values in a (a defaults to empty []) because b, c, and d are mandatory
 print(a, b, c, d) # o/p: [] 1 2 3
