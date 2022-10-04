@@ -261,7 +261,7 @@ print("a==>",a,"b==>",b,"c==>",c,"d==>",d,"e==>",e,"f==>",f) # o/p: a==> 1 b==> 
 # duplicate keys will be discarded(if duplicate keys is available while program runs, number of elements in dict will reduce so while unpacking at runtime will give error )
 # while basic unpacking dictionaries {key : values} only "keys" will be unpacked to corresponding variable from left to right
 # Ex : 1.8.1
-a,b = {'mayur': 29, 'priyanka': 29}
+a,b = {'mayur': 29, 'priyanka': 29} # unpacking only key
 print(a)
 print(b)
 # o/p:
@@ -275,10 +275,10 @@ a = {
     'mayur': 100,
     'priyanka': 29,
     } # if duplicate keys exists in dictionarie only last key is considered all the keys before last one will be discarded.
-print(a) # o/p : {'mayur': 100, 'priyanka': 29}}
+print(a) # o/p : {'mayur': 100, 'priyanka': 29}
 
 # Ex : 1.8.3
-# if duplicate keys is available while program is in runing state, number of elements in dict will reduce so while unpacking at runtime will give error.
+# if duplicate keys is available while program is in running state, number of elements in dict will reduce so while unpacking at runtime will give error.
 a,b,c = {
     'mayur': 29,
     'priyanka': 29,
