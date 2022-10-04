@@ -477,8 +477,8 @@ print(b, type(b)) 	# o/p: {'key1': 2, 'key2': 3} <class 'dict'>
 key1_value1, key2_value2 = b.items()    # Unpacking key-value pairs in tuple
 print(key1_value1, key2_value2) # o/p: ('key1', 2) ('key2', 3)
 
-key1, value1 = key1_value1  # unpacking data key and value from tuple
-key2, value2 = key2_value2  # unpacking data key and value from tuple
+key1, value1 = key1_value1  # unpacking data, key and value from tuple
+key2, value2 = key2_value2  # unpacking data, key and value from tuple
 print(key1,key2) # o/p: key1 key2
 print(value1,value2) # o/p: 2 3
 
