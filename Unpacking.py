@@ -58,6 +58,9 @@
 
 # Ex : 1.0
 
+import string
+
+
 (a, b, c) = (1, 2, 3)
 print("a:",a,"b:",b,"c:",c) # o/p : a: 1 b: 2 c: 3
     # When we put tuples on both sides of an assignment operator, a tuple unpacking operation takes place. 
@@ -271,7 +274,8 @@ print(type(a),type(b),type(c)) # o/p: <class 'int'> <class 'int'> <class 'int'>
                             # Unpacking Operators ( * and ** ) #
                             #----------------------------------#
 
-        # unpacking operators are operators that unpack the values from iterable(lists,tuples,dict and strings) objects in Python.
+        # unpacking operators are operators that unpack the values from 
+        # iterable(lists->mutable,dict->mutable,set->mutable,tuples->immutable and strings->immutable) objects in Python.
 
 #---------------------------------------#        
 # Unpacking Operator * (asterisk / star)#
@@ -312,7 +316,7 @@ my_list = [1, 2, 3, 4]
 my_sum(*my_list)    # 1 2 3 4 # * operator unpack 4 items from the list. 
                     # o/p: TypeError: my_sum() takes 3 positional arguments but 4 were given
 
-# Ex : 5
+# Ex : 3
 
 my_first_list = [1, 2, 3]
 my_second_list = [4, 5, 6]
@@ -332,7 +336,7 @@ print(my_merged_list) # o/p :[1, 2, 3, 4, 5, 6]
 
         # Converting variable-length iterable in single variable into a list # tricky concept
 
-# Ex : 1
+# Ex : 1(on String-immutable)
 
         # When you use the unpacking operator with single variable assignment, 
         # Python requires that your resulting variable is either a list or a tuple.
@@ -353,7 +357,7 @@ print(a)    # o/p : ['R', 'e', 'a', 'l', 'P', 'y', 't', 'h', 'o', 'n']
         # Where is the tuple ????
             # You never get to see the tuple that Python creates in this operation,
             # because you use tuple unpacking in combination with the unpacking operator *.
-# Ex : 2
+# Ex : 2(on String-immutable)
         # If you name a second variable on the left-hand side of the assignment, 
         # Python will assign the last character of the string to the second variable, 
         # while "packing" all remaining characters in the list "a"
@@ -365,7 +369,7 @@ print(b, type(b))
         # ['R', 'e', 'a', 'l', 'P', 'y', 't', 'h', 'o'] <class 'list'>
         # n <class 'str'>
 
-# Ex : 3
+# Ex : 1(on list-mutable)
 
     # if we need to split a list into three different parts.
     # The output should show the first value, the last value, and all the values in between.
@@ -383,7 +387,7 @@ print(c)
         # [2, 3, 4, 5]
         # 6
 
-# Ex : 4
+# Ex : 2(on list-mutable)
 
 my_list = [1, 2, 3, 4, 5, 6]
 a, b, *c = my_list  #  The first data from list is assigned to a, the second data to b, 
@@ -396,7 +400,7 @@ print(c)
         # 2
         # [3, 4, 5, 6]
 
-# Ex : 6
+# Ex : 1(on dictionaries-mutable)
 
 *a, = {     # Converting dict of variable-length iterable in single variable a of list type.(only key will be unpacked)
     'mayur': 200,
@@ -409,7 +413,7 @@ print(a, type(a)) # o/p: ['mayur', 'priyanka'] <class 'list'>
 # print(a.items())	# AttributeError: 'list' object has no attribute 'items'
                     # cant use items() function on list (we can only use on dictionaries)
 
-# Ex : 7
+# Ex : 2(on dictionaries-mutable)
 
 *a,b = {    # Converting dict type of variable-length iterable in single variable a of list type.
             # Python will assign the last character of the string type to the second variable b and 
@@ -427,7 +431,7 @@ print(b, type(b))   # o/p: priyanka <class 'str'>
 # print(b.items())	# AttributeError: 'str' object has no attribute 'items'
                     # cant use items() function on list (we can only use on dictionaries)
 
-# Ex : 8
+# Ex : 3(multiple starred expressions in assignmen)
 
     # *a,*b = {     # multiple starred expressions in assignment is not allowed
     #     '2': 200,
@@ -440,7 +444,7 @@ print(b, type(b))   # o/p: priyanka <class 'str'>
     # o/p: SyntaxError: multiple starred expressions in assignment
 
 
-# Ex : 9
+# Ex : 1 (on tuple-immutable)
 
 *a, = (1,2,"a",8,{ "key1" : 2, "key2" : 3 },9) # Converting tuple type variable-length iterable in single variable a of list type.
 print(a, type(a)) # o/p: [1, 2, 'a', 8, {'key': 2, 'value': 3}, 9] <class 'list'>
@@ -462,14 +466,14 @@ w, z = key2_value2 # further unpacking tuple data
 print(w,z) # o/p: key2 3
 
 
-# Ex : 10
+# Ex : 2 (on tuple-immutable)
 
 *a,b = (1,2,"a",8,9,
         {   
             "key1" : 2, 
             "key2" : 3 
         }
-        )   # Converting dict type of variable-length iterable in single variable "a", of list type.
+        )   # Converting tuple type of variable-length iterable in single variable "a", of list type.
             # Python will assign the last data from tuple which is of dict type to the second variable b, because b is mandatory
 
 print(a, type(a))   # o/p: [1, 2, 'a', 8, 9] <class 'list'>
@@ -484,14 +488,14 @@ print(value1,value2) # o/p: 2 3
 key1_value1, key2_value2= b.items() # Unpacking key-value pairs
 print(key1_value1, key2_value2) # o/p: ('key1', 2) ('key2', 3)
 
-# Ex : 11
+# Ex : 3 (on tuple-immutable)
 
 *a,b = (1,2,"a",8,9,
         {   
             "key1" : 2, 
             "key2" : 3 
         }
-        )   # Converting dict type of variable-length iterable in single variable "a", of list type.
+        )   # Converting tuple type of variable-length iterable in single variable "a", of list type.
             # Python will assign the last data from tuple which is of dict type to the second variable b, because b is mandatory
 
 print(a, type(a))   # o/p: [1, 2, 'a', 8, 9] <class 'list'>
@@ -506,14 +510,14 @@ print(key1,key2) # o/p: key1 key2
 print(value1,value2) # o/p: 2 3
 
 
-# Ex : 12
+# Ex : 4 (on tuple-immutable)
 
 *a, b, c, d = 1, 2, 3 # Packing no values in a (a defaults to empty []) because b, c, and d are mandatory
 print(a, b, c, d) # o/p: [] 1 2 3
 
-# Ex : 13
+# Ex : 1 (on Set-mutable)
     
-    # lists and dictionaries are mutable, so they can’t be "Set" elements.
+    # lists and dictionaries are mutable and unhashable, so they can’t be "Set" elements.
     # a, b, *c = {1, "abc", [1,2], 2.3} # TypeError: unhashable type: 'list'
     # a, *b, c = {1, "abc", {"a":1,"b":2}, 2.3} # TypeError: unhashable type: 'dict'
     # a, *b, c = {1,"abc",{1,2},2.3} # TypeError: unhashable type: 'set'
@@ -537,7 +541,7 @@ print(c, type(c))
     # Oredred means : element position or order of insertion are recorded as defined by programmer. 
 
 
-# Ex : 14
+# Ex : 2 (on set-mutable)
 
 a, *b, c = {"5",6}  # a and c are mandatory referance variables so b contains empty list.
                     # i.e at least one data will be unpacked in a and c each from set.
@@ -552,4 +556,23 @@ print(c, type(c))
         # [] <class 'list'>
         # 5 <class 'str'>
 
+# Ex : 3 (on frozenset-immutable)
+
+    # A frozenset is an "unordered" and "unindexed" collection of unique elements. It is "immutable" and it is "hashable".
+    # Frozen set is just an immutable version of a Python set object.
+z = set([frozenset([1,2,5,8]), frozenset([3,4,8,8])])
+print(z)
+x , y = set([frozenset([1,2,5,8]), frozenset([3,4,8,8])])
+print(x)
+print(y)
+*s, = x
+print(s)
+*m,  = y
+print(m)
+    # o/p:
+        # {frozenset({8, 1, 2, 5}), frozenset({8, 3, 4})}
+        # frozenset({8, 1, 2, 5})
+        # frozenset({8, 3, 4})
+        # [8, 1, 2, 5]
+        # [8, 3, 4]
 #------------------------------------------------------------------------------------------------------------------
