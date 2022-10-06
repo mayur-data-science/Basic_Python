@@ -127,7 +127,15 @@ print("a==>",a,"b==>",b,"c==>",c,"d==>",d,"e==>",e,"f==>",f)
 
 a, b, c, d = [1, '2', {1,2}, 2.3] # list
 print(a,b,c,d) # o/p: 1 2 {1, 2} 2.3
+print(type(b)) # o/p: <class 'str'>
 
+# Ex : 2
+
+a,b,c,d = [ "5", 10 + 12j, 8.9, ("A", 10 + 12j) ] 
+print(a, type(a))   # o/p: 5 <class 'str'>
+print(b, type(b))   # o/p: (10+12j) <class 'complex'>
+print(c, type(c))   # o/p: 8.9 <class 'float'>
+print(d, type(d))   # o/p: ('A', (10+12j)) <class 'tuple'>
 
 #-----------------------------------------------------------------------------------------------------#
 
@@ -184,9 +192,9 @@ print(type(a),":",a,":",type(b),b,":",type(c),c) # o/p: <class 'tuple'> : ('one'
 
 #----------------------------------------------------------------------------------------------------------------------------------------------#
 
-#------------------------#
-# Unpacking Set(ordered) :
-#------------------------#
+#-------------------------#
+# Unpacking Set(Unordered):
+#-------------------------#
 
     # in case of unordered iterables like a set(duplicate elements not considered), 
     # the sequence of values unpacked into different variables is not guaranteed.
@@ -232,6 +240,17 @@ else:
         # {160, 100, 170, 180}
         # a: 160 b: 100 c: 170 d: 180
         # set {160, 100, 170, 180} is iterable
+
+# Ex : 1.7
+z = set([frozenset([1,2]), frozenset([3,4])])
+print(z)    # o/p : {frozenset({3, 4}), frozenset({1, 2})}
+x , y = set([frozenset([1,2]), frozenset([3,4])])
+print(x)    # o/p : frozenset({3, 4})
+print(y)    # o/p : frozenset({1, 2})
+q, w = x
+print(q,w)  # o/p : 3 4
+e, r = y    
+print(e,r)  # o/p : 1 2
         
 #----------------------------------------------------------------------------------------------------------------#
 
@@ -252,7 +271,7 @@ print(type(a),type(b),type(c)) # o/p: <class 'int'> <class 'int'> <class 'int'>
                             # Unpacking Operators ( * and ** ) #
                             #----------------------------------#
 
-        # unpacking operators are operators that unpack the values from iterable(lists,tuples and strings) objects in Python.
+        # unpacking operators are operators that unpack the values from iterable(lists,tuples,dict and strings) objects in Python.
 
 #---------------------------------------#        
 # Unpacking Operator * (asterisk / star)#
@@ -277,7 +296,7 @@ print(my_list) # o/p : [1, 2, 3]
 my_list = [1, 2, 3]
 print(*my_list) # o/p: 1 2 3
 
-        # Instead of a list, print() has taken three separate arguments as the input.
+        # Instead of a list, print() function has taken three separate arguments as the input.
         # you used the unpacking operator * in function call , instead of in a function definition.
         # In this case, print() takes all the items of a list as though they were single arguments.
         # You can also use this method to call your own functions, 
@@ -308,10 +327,11 @@ print(my_merged_list) # o/p :[1, 2, 3, 4, 5, 6]
 #-----------------------------#
 
         # The * operator is known, in this context, as the tuple (or iterable) unpacking operator.
-        # It extends the unpacking functionality to allow us to collect or pack multiple values in a single variable.
+        # It extends the unpacking functionality to allow us to collect or "pack" multiple values in a single variable.
         
 
         # Converting variable-length iterable in single variable into a list # tricky concept
+
 # Ex : 1
 
         # When you use the unpacking operator with single variable assignment, 
@@ -322,21 +342,21 @@ print(my_merged_list) # o/p :[1, 2, 3, 4, 5, 6]
 
         # if you want to unpack all items of the variable-length iterable into a single variable, a, 
         # then you need to add the comma (,) without naming a second variable.
-        # Python will then unpack all items into the first named variable, which is a list.
+        # Python will then unpack all items from right side into the first named variable, which is a list.
         # here we have to use tuple unpacking in combination with the unpacking operator *.
 
-*a, = "RealPython"  # There’s the unpacking operator *, followed by a variable, and comma, and an assignment.
+*a, = "RealPython"  # There’s unpacking operator *, followed by a variable, and comma, and an assignment.
 print(a)    # o/p : ['R', 'e', 'a', 'l', 'P', 'y', 't', 'h', 'o', 'n']
 
         # The comma after the "a" does the trick.
-        # With the trailing comma, you have defined a tuple with only one named variable, a, which is the list
+        # With the trailing comma, you have defined a tuple with only one named variable, "a", which is the list
         # Where is the tuple ????
             # You never get to see the tuple that Python creates in this operation,
             # because you use tuple unpacking in combination with the unpacking operator *.
 # Ex : 2
         # If you name a second variable on the left-hand side of the assignment, 
         # Python will assign the last character of the string to the second variable, 
-        # while collecting all remaining characters in the list a
+        # while "packing" all remaining characters in the list "a"
 
 *a, b = "RealPython"
 print(a, type(a))
@@ -378,7 +398,7 @@ print(c)
 
 # Ex : 6
 
-*a, = {     # Converting variable-length iterable in single variable a of list type.
+*a, = {     # Converting dict of variable-length iterable in single variable a of list type.(only key will be unpacked)
     'mayur': 200,
     'mayur': 9,
     'mayur': 100,
@@ -387,12 +407,13 @@ print(c)
 print(a, type(a)) # o/p: ['mayur', 'priyanka'] <class 'list'>
 
 # print(a.items())	# AttributeError: 'list' object has no attribute 'items'
+                    # cant use items() function on list (we can only use on dictionaries)
 
 # Ex : 7
 
-*a,b = {    # Converting variable-length iterable in single variable a of list type.
+*a,b = {    # Converting dict type of variable-length iterable in single variable a of list type.
             # Python will assign the last character of the string type to the second variable b and 
-            # reamining packed into "a" of list type. 
+            # reamining "packed" into "a" (of list type). 
     'mayur': 200,
     'mayur': 9,
     'mayur': 100,
@@ -402,7 +423,9 @@ print(a, type(a))   # o/p: ['mayur'] <class 'list'>
 print(b, type(b))   # o/p: priyanka <class 'str'>
 
 # print(a.items())	# o/p: AttributeError: 'list' object has no attribute 'items'
+                    # cant use items() function on list (we can only use on dictionaries)
 # print(b.items())	# AttributeError: 'str' object has no attribute 'items'
+                    # cant use items() function on list (we can only use on dictionaries)
 
 # Ex : 8
 
@@ -419,7 +442,7 @@ print(b, type(b))   # o/p: priyanka <class 'str'>
 
 # Ex : 9
 
-*a, = (1,2,"a",8,{ "key1" : 2, "key2" : 3 },9) # Converting variable-length iterable in single variable a of list type.
+*a, = (1,2,"a",8,{ "key1" : 2, "key2" : 3 },9) # Converting tuple type variable-length iterable in single variable a of list type.
 print(a, type(a)) # o/p: [1, 2, 'a', 8, {'key': 2, 'value': 3}, 9] <class 'list'>
 
 # a.items() # o/p: AttributeError: 'list' object has no attribute 'items'
@@ -433,9 +456,9 @@ print(value1,value2) # o/p: 2 3
 key1_value1, key2_value2 = a[4].items()	# Unpacking key-value pairs (by default in tuple)
 print(key1_value1,key2_value2)  # o/p: ('key1', 2) ('key2', 3)
 
-x, y = key1_value1
+x, y = key1_value1 # further unpacking tuple data
 print(x,y) # o/p: key1 2
-w, z = key2_value2
+w, z = key2_value2 # further unpacking tuple data
 print(w,z) # o/p: key2 3
 
 
@@ -446,8 +469,8 @@ print(w,z) # o/p: key2 3
             "key1" : 2, 
             "key2" : 3 
         }
-        )  # Converting variable-length iterable in single variable a of list type.
-            # Python will assign the last character of the dict type to the second variable b, because b is mandatory
+        )   # Converting dict type of variable-length iterable in single variable "a", of list type.
+            # Python will assign the last data from tuple which is of dict type to the second variable b, because b is mandatory
 
 print(a, type(a))   # o/p: [1, 2, 'a', 8, 9] <class 'list'>
 print(b, type(b)) 	# o/p: {'key1': 2, 'key2': 3} <class 'dict'>
@@ -468,8 +491,8 @@ print(key1_value1, key2_value2) # o/p: ('key1', 2) ('key2', 3)
             "key1" : 2, 
             "key2" : 3 
         }
-        )  # Converting variable-length iterable in single variable "a" of list type.
-            # Python will assign the last character of the dict type to the second variable b, because b is mandatory
+        )   # Converting dict type of variable-length iterable in single variable "a", of list type.
+            # Python will assign the last data from tuple which is of dict type to the second variable b, because b is mandatory
 
 print(a, type(a))   # o/p: [1, 2, 'a', 8, 9] <class 'list'>
 print(b, type(b)) 	# o/p: {'key1': 2, 'key2': 3} <class 'dict'>
@@ -487,5 +510,46 @@ print(value1,value2) # o/p: 2 3
 
 *a, b, c, d = 1, 2, 3 # Packing no values in a (a defaults to empty []) because b, c, and d are mandatory
 print(a, b, c, d) # o/p: [] 1 2 3
+
+# Ex : 13
+    
+    # lists and dictionaries are mutable, so they can’t be "Set" elements.
+    # a, b, *c = {1, "abc", [1,2], 2.3} # TypeError: unhashable type: 'list'
+    # a, *b, c = {1, "abc", {"a":1,"b":2}, 2.3} # TypeError: unhashable type: 'dict'
+    # a, *b, c = {1,"abc",{1,2},2.3} # TypeError: unhashable type: 'set'
+    
+a, b, *c = {1, "abc", (1,2), 2.3}   # unpacking Set data # a and b are mandatory referance variables
+                                    # i.e at least one data will be unpacked in a and b each from set.
+                                    # which one data will go to a and b each ???
+                                            # actualy we cant predict because sets are unordered by rules 
+print(a, type(a))
+print(b, type(b))
+print(c, type(c))
+
+    # o/p : (1st run)                               (2nd run)
+            # (1, 2) <class 'tuple'>                # 1 <class 'int'>
+            # 1 <class 'int'>                       # 2.3 <class 'float'>
+            # [2.3, 'abc'] <class 'list'>           # [(1, 2), 'abc'] <class 'list'>
+    
+    # Note- Sets are unordered so every time you run the program the output will vary 
+    
+    # Unordered means : element position or order of insertion are "not" recorded as defined by programmer.
+    # Oredred means : element position or order of insertion are recorded as defined by programmer. 
+
+
+# Ex : 14
+
+a, *b, c = {"5",6}  # a and c are mandatory referance variables so b contains empty list.
+                    # i.e at least one data will be unpacked in a and c each from set.
+                                    # which one data will go to a and b each ???
+                                            # actualy we cant predict because sets are unordered by rules
+print(a, type(a)) 
+print(b, type(b))
+print(c, type(c))
+
+    # o/p : 
+        # 6 <class 'int'>
+        # [] <class 'list'>
+        # 5 <class 'str'>
 
 #------------------------------------------------------------------------------------------------------------------
