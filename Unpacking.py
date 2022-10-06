@@ -23,8 +23,8 @@
         # print(x,y,z) # o/p: 0 1 2
         
         # operation that consists of assigning an iterable of values of right hand side to a left hand side
-        
         # {set} or dict {key:values} of variables in a single assignment statement is not allowed.
+        
         # Ex : 0.0
             # {a,b,c} = 1,2,3 # SyntaxError: cannot assign to set display here. Maybe you meant '==' instead of '='?
             # print("a:",a,"b:",b,"c:",c)
@@ -468,7 +468,7 @@ print(key1_value1, key2_value2) # o/p: ('key1', 2) ('key2', 3)
             "key1" : 2, 
             "key2" : 3 
         }
-        )  # Converting variable-length iterable in single variable a of list type.
+        )  # Converting variable-length iterable in single variable "a" of list type.
             # Python will assign the last character of the dict type to the second variable b, because b is mandatory
 
 print(a, type(a))   # o/p: [1, 2, 'a', 8, 9] <class 'list'>
