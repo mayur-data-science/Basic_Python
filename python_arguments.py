@@ -358,11 +358,13 @@ print(my_merged_list)
 # o/p :[1, 2, 3, 4, 5, 6]
 
 # Ex : 1.0
+
 x = (1,2,1,8,7,9) # Tuple
 print(x) # o/p : (1, 2, 1, 8, 7, 9)
 print(*x) # o/p: 1 2 1 8 7 9
 
 # Ex : 1.1
+
 x = (1,2,"a",8,{ "key" : 2, "value" : 3 },9) # dictionarie in tuple
 print(x) # o/p : (1, 2, 'a', 8, {'key': 2, 'value': 3}, 9)
 print(*x) # o/p : 1 2 a 8 {'key': 2, 'value': 3} 9
@@ -378,6 +380,7 @@ print(*a) # o/p : m a y u r
 # print(a)
 
 # Ex : 2
+
 a = {
     'mayur': 200,
     'mayur': 9,
