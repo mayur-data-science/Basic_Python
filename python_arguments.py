@@ -40,11 +40,13 @@ sum(1,True) # passing boolean data
 #----------------------------------------------------------------------------------------------------------------
 
 ### Positional Arguments :
+
         # Positional Arguments are needed to be included in proper order
         # i.e the first argument is always listed first when the function is called, 
         # second argument needs to be listed second when function is called and so on....
         
 # Ex : 1
+
 def person_name(first_name,second_name):
     print(first_name + second_name)
 	
@@ -55,6 +57,7 @@ person_name("Ram","Babu")   # First name is Ram placed first
         # Keyword Arguments is an argument passed to a function or method which is preceded by a keyword and an equal to sign.
         # The order in keyword Arguments need not to be same as in positional argument.
         # while calling a function we explicitly telling python which argument value goes to which parameters in function declation by keyword names same as given in parameters.
+
 # Ex : 1
 
 def person_name(first_name,second_name):
@@ -68,6 +71,7 @@ person_name(second_name="Babu",first_name="Ram") # Here we are explicitly assign
         # if we specify positional argument and  Keyword Arguments in same function its mandatory that 
         # we must specify "positional Arguments" "first" and then specify Keyword Arguments.
         # other wise we will get syntaxError.
+
 # Ex : 1
 
 def fruits(a, b, p): # Non-default Parameters. # mandatory to pass 3 argument while calling this function.
