@@ -14,8 +14,12 @@ print(a,b,c,d) # o/p: 1 2 {1, 2} 2.3
 # dict: 
     # an Ordered, mutable collection of key-value pairs
     # As of Python version 3.10.7, dictionaries are "ordered". In Python 3.6 and earlier, dictionaries are unordered.
+
+
 # tuple: 
     # an Ordered, immutable collection of elements
+
+
 # set: 
     # an unordered, mutable collection of unique elements
     
