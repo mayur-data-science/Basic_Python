@@ -40,6 +40,7 @@ x = {100,170,180,160,100}
 print(x)
 a,b,c,d,e = x
 print("a:",a,"b:",b,"c:",c,"d:",d,"e:",e) 
+
 # o/p:
     # {160, 100, 170, 180}
     # ValueError: not enough values to unpack (expected 5, got 4)
