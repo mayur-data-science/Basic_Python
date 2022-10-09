@@ -818,3 +818,140 @@ def test_kwargs(**packing_with_doublestar):
     print(packing_with_doublestar) # o/p : {'random': 12, 'parameters': 21}
 
 test_kwargs(random=12, parameters=21)
+
+#----------------------------------------------------------------------------------------------------------------------------------#
+
+
+#-----------------------------------------#        
+# Using Packing and Unpacking in Practice #
+#-----------------------------------------#
+    
+    #--------------------#
+    # Parallel assignment:
+    #--------------------#
+        # Parallel assignment allows you to assign the values in an iterable to a tuple (or list) of variables in a single 
+        # and elegant statement.
+
+
+employee = ["Mayur", "29", "Data Scientist"]
+name = employee[0]
+age = employee[1]
+job = employee[2]
+print(name,age,job) # o/p: Mayur 29 Data Scientist
+
+    # Using unpacking in Python, we can solve the problem of the previous example with a single, straightforward, and elegant statement. 
+
+name, age , job = ["Mayur", "29", "Data Scientist"]
+print(name, age , job) # o/p: Mayur 29 Data Scientist
+
+
+
+    #----------------------------------#
+    # Swapping Values Between Variables:
+    #----------------------------------#
+        
+        # Another elegant application of unpacking in Python is swapping values between variables without 
+        # using a temporary or auxiliary variable. 
+
+
+a = 100
+b = 200
+print("a:",a, "b:",b) # o/p : a: 100 b: 200
+temp = a
+a = b
+b = temp
+print("a:",a, "b:",b) # o/p : a: 200 b: 100
+
+        # This procedure takes three steps and a new temporary variable. 
+        # If we use unpacking in Python, then we can achieve the same result in a single and concise step
+
+a = 100
+b = 200
+print("a:",a, "b:",b) # o/p : a: 100 b: 200
+b,a = a,b 
+print("a:",a, "b:",b) # o/p : a: 200 b: 100
+
+
+    #----------------------------------#
+    # Collecting Multiple Values With *:
+    #----------------------------------#
+
+        # When we're working with some algorithms, 
+        # there may be situations in which we need to split the values of an iterable or a sequence in chunks of values for further processing. 
+        # The following example shows how to uses a list and slicing operations to do so
+
+seq = [1, 2, 3, 4]
+first, body, last = seq[0], seq[1:3], seq[-1]
+
+print(first, body, last) # o/p: 1 [2, 3] 4
+
+        # Even though this code works as we expect, 
+        # dealing with indices and slices can be a little bit annoying, difficult to read, and confusing for beginners.
+        # It has also the drawback of making the code rigid and difficult to maintain.
+        
+        # In this situation, the iterable unpacking operator, *, 
+        # and its ability to pack several values in a single variable can be a great tool.
+
+seq = [1, 2, 3, 4]
+first, *body, last = seq
+
+print(first, body, last) # o/p: 1 [2, 3] 4
+        
+        # This makes our code more readable, maintainable, and flexible.
+        # You may be thinking, why more flexible?
+        # Well, suppose that seq changes its length in the road and you still need to collect the middle elements in body.
+        # In this case, since we're using unpacking in Python, no changes are needed for our code to work. 
+        # Check out this example:
+        
+seq = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+first, *body, last = seq
+
+print(first, body, last) # o/p: 1 [2, 3, 4, 5, 6, 7, 8, 9] 10
+
+        # If we were using sequence slicing instead of iterable unpacking in Python, 
+        # then we would need to update our indices and slices to correctly catch the new values.
+
+
+
+    #---------------------------------#
+    # Dropping Unneeded Values With * :
+    #---------------------------------#
+
+
+        # Another common use-case of the * operator is to use it with a dummy variable name to drop some useless or unneeded values. 
+        # Check out the following example:
+        
+a, b, *_ = 1, 2, 0, 0, 0, 0
+print(a)
+print(b)
+print(_)
+
+    # o/p :
+        # 1
+        # 2
+        # [0, 0, 0, 0]
+        
+        # For a more insightful example of this use-case, 
+        # suppose we're developing a script that needs to determine the Python version we're using. 
+        # To do this, we can use the sys.version_info attribute.
+        
+        # This attribute returns a tuple containing the five components of the version number: major, minor, micro, releaselevel, and serial.
+        # But we just need major, minor, and micro for our script to work, so we can drop the rest.
+
+import sys
+print(sys.version_info)
+major, minor, micro, *_ = sys.version_info
+print(major, minor, micro)
+
+    # o/p : 
+        # sys.version_info(major=3, minor=10, micro=7, releaselevel='final', serial=0)
+        # 3 10 7
+        
+        
+        # The rest of the information is stored in the dummy variable _
+        # This can make clear to newcomer developers that 
+        # we don't want to (or need to) use the information stored in _ cause this character has no apparent meaning.
+
+    #------------------------------#
+    # Returning Tuples in Functions:
+    #------------------------------#
