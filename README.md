@@ -1,2 +1,2 @@
 # Basic_Python
-Python Findamental Concept's 
+Python Fundamental Concept's 
