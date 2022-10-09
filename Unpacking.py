@@ -48,9 +48,9 @@
 
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------#
 
-#---------------------------#
-# Unpacking Tuples(ordered) :
-#---------------------------# 
+#-------------------------------------#
+# Unpacking Tuples(ordered-immutable) :
+#-------------------------------------# 
     # In Python, we can put a tuple of variables on the left side of an assignment operator (=) and 
     # a tuple of values on the right side.
     
@@ -123,7 +123,7 @@ print("a==>",a,"b==>",b,"c==>",c,"d==>",d,"e==>",e,"f==>",f)
 #-----------------------------------------------------------------------------------------------------#
 
 #-------------------------#
-# Unpacking List(ordered) :
+# Unpacking List(ordered-mutable) :
 #-------------------------#
 
 # Ex : 1
@@ -142,9 +142,9 @@ print(d, type(d))   # o/p: ('A', (10+12j)) <class 'tuple'>
 
 #-----------------------------------------------------------------------------------------------------#
 
-#--------------------------------#
-# Unpacking dictionarie(ordered) :
-#--------------------------------#
+#----------------------------------------#
+# Unpacking dictionarie(ordered-mutable) :
+#----------------------------------------#
 
     # duplicate keys will be discarded(if duplicate keys is available while program runs, number of elements in dict will reduce so while unpacking at runtime will give error )
     # while basic unpacking dictionaries {key : values} only "keys" will be unpacked to corresponding variable from left to right
@@ -165,7 +165,7 @@ a = {
     'mayur': 9,
     'mayur': 100,
     'priyanka': 29,
-    } # if duplicate keys exists in dictionarie only last key is considered all the keys before last one will be discarded.
+    } # if duplicate keys exists in dictionarie only last key is considered all the keys before last one will be ignored.
 print(a) # o/p : {'mayur': 100, 'priyanka': 29}
 
 # Ex : 1.3
@@ -179,6 +179,7 @@ a,b,c = {
 print(a,b,c)
 
 # Ex : 1.4
+    
     # Unpacking dictionaries (keys, values, and items)
 
 my_dict = {'one': 1, 'two':2, 'three': 3}
@@ -195,11 +196,11 @@ print(type(a),":",a,":",type(b),b,":",type(c),c) # o/p: <class 'tuple'> : ('one'
 
 #----------------------------------------------------------------------------------------------------------------------------------------------#
 
-#-------------------------#
-# Unpacking Set(Unordered):
-#-------------------------#
+#---------------------------------#
+# Unpacking Set(Unordered-mutable):
+#---------------------------------#
 
-    # in case of unordered iterables like a set(duplicate elements not considered), 
+    # in case of unordered iterables like a set(duplicate elements ignored), 
     # the sequence of values unpacked into different variables is not guaranteed.
 
 # Ex : 1.1
@@ -239,6 +240,7 @@ if hasattr(x, '__iter__'):
     print(f'set {x} is iterable')
 else:
     print(f'{x} is not iterable')
+    
     # o/p: 
         # {160, 100, 170, 180}
         # a: 160 b: 100 c: 170 d: 180
@@ -277,16 +279,28 @@ print(type(a),type(b),type(c)) # o/p: <class 'int'> <class 'int'> <class 'int'>
         # unpacking operators are operators that unpack the values from 
         # iterable(lists->mutable,dict->mutable,set->mutable,tuples->immutable and strings->immutable) objects in Python.
 
-#---------------------------------------#        
-# Unpacking Operator * (asterisk / star)#
-#---------------------------------------#
+#----------------------------------------#        
+# Unpacking Operator * (asterisk / star) #
+#----------------------------------------#
 
         # The single asterisk operator * can be used on any iterable(lists,tuples and strings) object that Python provides.
 
+#---------------------------------#
+# * on String : (Ordered,immutable)
+#---------------------------------#
 
-#-----------#
-# * on List :
-#-----------#
+x = "mayur"
+print(len(x)) # 5
+# print(len(*x)) # TypeError: len() takes exactly one argument (5 given)
+print(*x) # m a y u r
+print([*x]) # ['m', 'a', 'y', 'u', 'r'] 
+print({*x}) # {'r', 'a', 'u', 'm', 'y'}
+# print((*x)) # SyntaxError: cannot use starred expression here
+
+
+#-----------------------------#
+# * on List : (Ordered,Mutable)
+#-----------------------------#
 
 # Ex : 1.0
 
@@ -324,6 +338,128 @@ my_merged_list = [*my_first_list, *my_second_list]
 
 print(my_merged_list) # o/p :[1, 2, 3, 4, 5, 6]
 
+#------------------------------#
+# * on Tuple:(Ordered,immutable)
+#------------------------------#
+
+# Ex : 1
+tuple = ("apple", "banana", "cherry", "apple", "cherry")
+print(*tuple) # o/p : apple banana cherry apple cherry
+    # a, b, c, d, e = *tuple # SyntaxError: can't use starred expression here
+
+# Ex : 2
+
+tuple = ("apple",70+55j,True, [29,10.74,"piya",10+20j,0+20j], (4.7,2), {"name" : "mayur", "score" : 100, "complex" : 10+88j, True : True==1}, {"mayur",29,30+40j})
+print(*tuple)
+string, complex, boolean, list, tuple2, dict, set = tuple
+    # o/p : apple (70+55j) True [29, 10.74, 'piya', (10+20j), 20j] (4.7, 2) {'name': 'mayur', 'score': 100, 'complex': (10+88j), True: True} {'mayur', 29, (30+40j)}
+
+
+#-----------------------------------------------------#
+# * on Dictionaries:(Ordered(from version 3.7),Mutable)
+#-----------------------------------------------------#
+
+        # unpacking dictionarie with * , only keys will be unpacked.
+
+# Ex : 1
+
+a = {
+    'mayur': 200,
+    'mayur': 9,
+    'mayur': 100,
+    'priyanka': 29,
+    }       # if duplicate keys exists in dictionarie only last key is considered all the keys before last one will be ignored.
+print(*a)   # unpacking dictionarie with * , only keys will be unpacked.
+    # o/p: mayur priyanka
+
+# Ex : 2
+
+a = {
+        "nested1": {
+            "mayur": 100,
+            'priyanka': 29,
+        },
+        
+        "nested2": {
+            "mayur": 100,
+            'priyanka': 29,
+        }
+    }
+
+print(*a) # o/p : nested1 nested2
+
+# Ex : 3
+
+a1 = {1 : "a", 2 : "b"}
+a2 = {3 : "c", 4 : "d"}
+a3 = {5 : "e", 6 : "f"}
+
+d1 = {*a1,*a2,*a3}
+print(d1) # o/p :{1, 2, 3, 4, 5, 6}
+
+#--------------------------#
+# * on Set:(Ordered,Mutable)
+#--------------------------#
+
+# Ex : 1
+set = {'a', 'e', 'i', 'o', 'u'}
+print(*set) # o/p : i o e u a
+
+# Ex : 2
+set = {100,500,'s',50}
+print(*set) # o/p : s 50 100 500
+
+# Ex : 3
+set = {100,170,180,160,100}
+print(*set) # o/p : 160 100 170 180
+
+# Ex : 4
+fset = set([frozenset([1,2]), frozenset([3,4])])
+print(*fset) # o/p : frozenset({3, 4}) frozenset({1, 2})
+a,b = [*fset]
+print(*a) # o/p : 3 4
+print(*b) # o/p : 1 2
+
+# Ex : 5
+fset = set(frozenset(["mayur",4,10+20j]))
+print(*fset) # o/p : 4 mayur (10+20j)
+a,b = [*fset]
+print(type(a),type(b)) # o/p : <class 'int'> <class 'str'> <class 'complex'>
+print(a,b) # o/p : 4 mayur (10+20j)
+
+
+#-----------------#
+# * on generators :
+#-----------------#
+
+# Ex : 1
+
+gen = (2 ** x for x in range(3))
+print(*gen)  # o/p : 1 2 4
+print(type(gen)) # o/p: <class 'generator'>
+a, b, c = gen # ValueError: not enough values to unpack (expected 3, got 0)
+print(a,b,c) # Not executed
+print(type(a),type(b),type(c)) # Not executed
+    # o/p : 
+        # 1 2 4
+        # <class 'generator'>
+        # ValueError: not enough values to unpack (expected 3, got 0)
+        
+# Ex : 2
+gen = (2 ** x for x in range(3))
+print(type(gen)) # o/p: <class 'generator'>
+a, b, c = gen # Unpacking generators
+print(a,b,c) # o/p: 1 2 4
+print(type(a),type(b),type(c)) # <class 'int'> <class 'int'> <class 'int'>
+print(*gen) 
+
+    # o/p : 
+        # <class 'generator'>
+        # 1 2 4
+        # <class 'int'> <class 'int'> <class 'int'>
+
+
+#--------------------------------------------------------------------------------------------------------------------------#
 
 
 #-----------------------------#
@@ -369,7 +505,7 @@ print(b, type(b))
         # ['R', 'e', 'a', 'l', 'P', 'y', 't', 'h', 'o'] <class 'list'>
         # n <class 'str'>
 
-# Ex : 1(on list-mutable)
+# Ex : 1(on list-->ordered,mutable)
 
     # if we need to split a list into three different parts.
     # The output should show the first value, the last value, and all the values in between.
@@ -387,7 +523,7 @@ print(c)
         # [2, 3, 4, 5]
         # 6
 
-# Ex : 2(on list-mutable)
+# Ex : 2(on list-->ordered,mutable)
 
 my_list = [1, 2, 3, 4, 5, 6]
 a, b, *c = my_list  #  The first data from list is assigned to a, the second data to b, 
@@ -400,7 +536,7 @@ print(c)
         # 2
         # [3, 4, 5, 6]
 
-# Ex : 1(on dictionaries-mutable)
+# Ex : 1(on dictionaries-->ordered,mutable)
 
 *a, = {     # Converting dict of variable-length iterable in single variable a of list type.(only key will be unpacked)
     'mayur': 200,
@@ -413,7 +549,7 @@ print(a, type(a)) # o/p: ['mayur', 'priyanka'] <class 'list'>
 # print(a.items())	# AttributeError: 'list' object has no attribute 'items'
                     # cant use items() function on list (we can only use on dictionaries)
 
-# Ex : 2(on dictionaries-mutable)
+# Ex : 2(on dictionaries-->ordered,mutable)
 
 *a,b = {    # Converting dict type of variable-length iterable in single variable a of list type.
             # Python will assign the last character of the string type to the second variable b and 
@@ -444,7 +580,7 @@ print(b, type(b))   # o/p: priyanka <class 'str'>
     # o/p: SyntaxError: multiple starred expressions in assignment
 
 
-# Ex : 1 (on tuple-immutable)
+# Ex : 1 (on tuple-ordered,immutable)
 
 *a, = (1,2,"a",8,{ "key1" : 2, "key2" : 3 },9) # Converting tuple type variable-length iterable in single variable a of list type.
 print(a, type(a)) # o/p: [1, 2, 'a', 8, {'key': 2, 'value': 3}, 9] <class 'list'>
@@ -466,7 +602,7 @@ w, z = key2_value2 # further unpacking tuple data
 print(w,z) # o/p: key2 3
 
 
-# Ex : 2 (on tuple-immutable)
+# Ex : 2 (on tuple-ordered,immutable)
 
 *a,b = (1,2,"a",8,9,
         {   
@@ -488,7 +624,7 @@ print(value1,value2) # o/p: 2 3
 key1_value1, key2_value2= b.items() # Unpacking key-value pairs
 print(key1_value1, key2_value2) # o/p: ('key1', 2) ('key2', 3)
 
-# Ex : 3 (on tuple-immutable)
+# Ex : 3 (on tuple-->ordered,immutable)
 
 *a,b = (1,2,"a",8,9,
         {   
@@ -510,14 +646,14 @@ print(key1,key2) # o/p: key1 key2
 print(value1,value2) # o/p: 2 3
 
 
-# Ex : 4 (on tuple-immutable)
+# Ex : 4 (on tuple-->ordered,immutable)
 
 *a, b, c, d = 1, 2, 3 # Packing no values in a (a defaults to empty []) because b, c, and d are mandatory
 print(a, b, c, d) # o/p: [] 1 2 3
 
-# Ex : 1 (on Set-mutable)
+# Ex : 1 (on Set-unordered,mutable)
     
-    # lists and dictionaries are mutable and unhashable, so they can’t be "Set" elements.
+    # set,lists and dictionaries are mutable and unhashable, so they can’t be "Set" elements.
     # a, b, *c = {1, "abc", [1,2], 2.3} # TypeError: unhashable type: 'list'
     # a, *b, c = {1, "abc", {"a":1,"b":2}, 2.3} # TypeError: unhashable type: 'dict'
     # a, *b, c = {1,"abc",{1,2},2.3} # TypeError: unhashable type: 'set'
