@@ -747,6 +747,12 @@ print(m)
 *g, = (x for x in range(6))
 print(g) # o/p : [0, 1, 2, 3, 4, 5]
 
+# Ex : 1(on callable object)
+def test_type(*args):
+    print(type(args)) # o/p: <class 'tuple'>
+    print(args) # o/p : (1, 2, 4, 'a string')
+test_type(1, 2, 4, 'a string')
+
 #-------------------------------------------------------------------------------------------------------------------------------#
 
 #------------------------------------------------#        
@@ -767,6 +773,10 @@ print(g) # o/p : [0, 1, 2, 3, 4, 5]
 # **greetings, = {'hello': 'HELLO', 'bye':'BYE'} # SyntaxError: invalid syntax
 
 # Ex : 1
+print({**{'vanilla':3, 'chocolate':2}, 'strawberry':2})
+    # o/p: {'vanilla': 3, 'chocolate': 2, 'strawberry': 2}
+
+# Ex : 2
         # numbers = {"one" : 1, "two" : 2, "three" : 3}
         # letters = {"a" : "A", "b" : "B", "c" : "C"}
         # combination = {numbers,letters} # TypeError: unhashable type: 'dict'
@@ -779,7 +789,7 @@ print(combination) # o/p : {'one': 1, 'two': 2, 'three': 3, 'a': 'A', 'b': 'B', 
         # If we use the dictionary unpacking operator inside a dictionary display, 
         # then we can unpack dictionaries and combine them to create a final dictionary that includes the key-value pairs of the original dictionaries
 
-# Ex : 2
+# Ex : 3
     # if the dictionaries we're trying to merge have repeated or common keys,
     # then the values of the right-most dictionary will override the values of the left-most dictionary.
 
@@ -791,7 +801,7 @@ print(combination) # o/p : {'a': 'a', 'b': 'B', 'c': 'C', 'e': 'e', 'i': 'i', 'o
         # Python starts adding the key-value pairs from left to right. If, in the process, Python finds keys that already exit, 
         # then the interpreter updates that keys with the new value.
 
-# Ex : 3
+# Ex : 4
     # ** in function call.
 def add(one,two,three):
     print(one+two+three)
@@ -801,14 +811,10 @@ numbers = {"one" : 1, "two" : 2, "three" : 3}
 add(**numbers) 
 # o/p: 6
 
-# Ex : 4
-print({**{'vanilla':3, 'chocolate':2}, 'strawberry':2})
-    # o/p: {'vanilla': 3, 'chocolate': 2, 'strawberry': 2}
+# Ex : 5(packing with **)
 
-# Ex : 5
-
-def test_kwargs(**kwargs):
-    print(type(kwargs)) # o/p: <class 'dict'>
-    print(kwargs) # o/p : {'random': 12, 'parameters': 21}
+def test_kwargs(**packing_with_doublestar):
+    print(type(packing_with_doublestar)) # o/p: <class 'dict'>
+    print(packing_with_doublestar) # o/p : {'random': 12, 'parameters': 21}
 
 test_kwargs(random=12, parameters=21)
