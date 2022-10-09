@@ -86,8 +86,8 @@ print("a:",a,"b:",b,"c:",c) # o/p: a: 1 b: 2 c: 3
 
 # Ex : 1.2
 
-a, b = 1, 2, 3 # ValueError: too many values to unpack (expected 2)
-print("a:",a,"b:",b)
+#   a, b = 1, 2, 3 # ValueError: too many values to unpack (expected 2)
+#    print("a:",a,"b:",b)
 
     # Note: The only exception to this is when we use the * operator to pack several values in one variable as we'll see later on.
     
@@ -421,11 +421,12 @@ print(*a) # o/p : 3 4
 print(*b) # o/p : 1 2
 
 # Ex : 5
+
 fset = set(frozenset(["mayur",4,10+20j]))
 print(*fset) # o/p : 4 mayur (10+20j)
-a,b = [*fset]
-print(type(a),type(b)) # o/p : <class 'int'> <class 'str'> <class 'complex'>
-print(a,b) # o/p : 4 mayur (10+20j)
+a,b,c = [*fset]
+print(type(a),type(b),type(c)) # o/p : <class 'int'> <class 'str'> <class 'complex'>
+print(a,b,c) # o/p : 4 mayur (10+20j)
 
 
 #-----------------#
@@ -955,5 +956,148 @@ print(major, minor, micro)
     #------------------------------#
     # Returning Tuples in Functions:
     #------------------------------#
+
+        # Python functions can return several values separated by commas. 
+        # Since we can define tuple objects without using parentheses, 
+        # this kind of operation can be interpreted as returning a tuple of values.
+        # If we code a function that returns multiple values, 
+        # then we can perform iterable packing and unpacking operations with the returned values.
+
+def powers(number):
+    return number, number ** 2, number ** 3
+
+result = powers(3) # Packing returned values in a tuple
+print(result) # o/p : (3, 9, 27)
+
+number, square, cube = powers(3) # Unpacking returned values to multiple variables
+print(number) # 3
+print(square) # 9
+print(cube) # 27
+
+*_, cube = powers(3)
+print(cube) # 27
+
+    #-----------------------#
+    # Unpacking in For-Loops:
+    #-----------------------#
+
+        # We can also use iterable unpacking in the context of for loops. 
+        # When we run a for loop, the loop assigns one item of its iterable to the target variable in every iteration.
+        # If the item to be assigned is an iterable, then we can use a tuple of target variables. 
+        # The loop will unpack the iterable at hand into the tuple of target variables.
+
+
+sales = [("Pencil", 0.22, 1500), ("Notebook", 1.30, 550), ("Eraser", 0.75, 1000)]
+
+for item in sales:
+    print(f"Income for {item[0]} is: {item[1] * item[2]}")
+    
+    # o/p :
+        # Income for Pencil is: 330.0
+        # Income for Notebook is: 715.0
+        # Income for Eraser is: 750.0
+        
+        
+        #This code works as expected. However, we're using indices to get access to individual elements of each tuple.
+        # This can be difficult to read and to understand by newcomer developers.
+        # alternative implementation using unpacking in Python.
+
+sales = [("Pencil", 0.22, 1500), ("Notebook", 1.30, 550), ("Eraser", 0.75, 1000)]
+
+for  product, price, sold_units in sales:
+    print(f"Income for {product} is: {price * sold_units}")
+
+    # o/p :
+        # Income for Pencil is: 330.0
+        # Income for Notebook is: 715.0
+        # Income for Eraser is: 750.0
+
+    # It's also possible to use the * operator in a for loop to pack several items in a single target variable:
+
+for first, *rest in [(1, 2, 3), (4, 5, 6, 7)]:
+    print("First:", first)
+    print("Rest:", rest)
+    
+    # o/p:
+        # First: 1
+        # Rest: [2, 3]
+        # First: 4
+        # Rest: [5, 6, 7]
+        
+    # Finally, the structure of the target variables must agree with the structure of the iterable.
+    # Otherwise, we'll get an error. Take a look at the following example
+
+data = [((1, 2), 2), ((2, 3), 3)]
+
+for (a, b), c in data:  # the structure of the target variables, (a, b), c, 
+                        # agrees with the structure of the items in the iterable, ((1, 2), 2).
+    print(a, b, c)
+    
+    # o/p: 
+        # 1 2 2
+        # 2 3 3
+
+data = [((1, 2), 2), ((2, 3), 3)]
+
+for a, b, c in data:    # structure of target variables that don't agree with the structure of the items in the iterable, 
+                        # so the loop fails and raises a ValueError
+    print(a, b, c)
+    
+    # o/p : ValueError: not enough values to unpack (expected 3, got 2)
+
+    #-----------------------------------#
+    # Packing and Unpacking in Functions#
+    #-----------------------------------#
+    
+        # We can also use Python's packing and unpacking features when defining and calling functions.
+
+    # Defining Functions With * and **:
+        # We can use the * and ** operators in the signature of Python functions.
+        # This will allow us to call the function with a variable number of positional arguments (*) or 
+        # with a variable number of keyword arguments, or both.
+        # In the signature, the operators mean collect or pack a variable number of arguments in one identifier.
+
+def func(required, *args, **kwargs):    # the * operator packs extra positional arguments in a tuple called args
+                                        # the ** operator packs extra keyword arguments in a dictionary called kwargs
+                                        # Both, args and kwargs, are optional and automatically default to empty tuple () and empty dict {} respectively.
+    print(required)
+    print(args)
+    print(kwargs)
+
+func("Welcome to...", 1, 2, 3, site='github.com')
+
+    # o/p : 
+        # Welcome to...
+        # (1, 2, 3)
+        # {'site': 'github.com'}
     
     
+    # Calling Functions With * and **:
+        # When calling functions, we can also benefit from the use of the 
+        # * and ** operator to unpack collections of arguments into separate positional or keyword arguments respectively.
+
+        # In the function call, the operators mean unpack an iterable into several arguments.
+
+
+def func(welcome, to, site):
+    print(welcome, to, site)
+
+func(*["Welcome", "to"], **{"site": 'github.com'})
+
+    # o/p : Welcome to github.com
+
+def func(required, *args, **kwargs):
+    print(required)
+    print(args)
+    print(kwargs)
+
+func("Welcome to...", *(1, 2, 3), **{"site": 'StackAbuse.com'})
+
+    # o/p : 
+        # Welcome to...
+        # (1, 2, 3)
+        # {'site': 'StackAbuse.com'}
+
+
+
+
