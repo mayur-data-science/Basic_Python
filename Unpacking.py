@@ -752,15 +752,25 @@ print(g) # o/p : [0, 1, 2, 3, 4, 5]
 #------------------------------------------------#        
 # Unpacking Operator ** (double asterisk / star) #
 #------------------------------------------------#
+        
 
         # the ** operator is called the dictionary unpacking operator.
+        # the double asterisk operator ** can only be used on "dictionaries".
+        # ** unpacking operator unpack key and values also.
         # The use of this operator was extended by PEP 448.
         # Now, we can use it in function calls, in comprehensions and generator expressions, and in displays.
         
         # A basic use-case for the dictionary unpacking operator is to merge multiple dictionaries into one final dictionary with a single expression.
 
-# Ex : 1
+# Ex : 0
 
+# **greetings, = {'hello': 'HELLO', 'bye':'BYE'} # SyntaxError: invalid syntax
+
+# Ex : 1
+        # numbers = {"one" : 1, "two" : 2, "three" : 3}
+        # letters = {"a" : "A", "b" : "B", "c" : "C"}
+        # combination = {numbers,letters} # TypeError: unhashable type: 'dict'
+        # print(combination)
 numbers = {"one" : 1, "two" : 2, "three" : 3}
 letters = {"a" : "A", "b" : "B", "c" : "C"}
 combination = {**numbers,**letters}
@@ -790,3 +800,15 @@ numbers = {"one" : 1, "two" : 2, "three" : 3}
 
 add(**numbers) 
 # o/p: 6
+
+# Ex : 4
+print({**{'vanilla':3, 'chocolate':2}, 'strawberry':2})
+    # o/p: {'vanilla': 3, 'chocolate': 2, 'strawberry': 2}
+
+# Ex : 5
+
+def test_kwargs(**kwargs):
+    print(type(kwargs)) # o/p: <class 'dict'>
+    print(kwargs) # o/p : {'random': 12, 'parameters': 21}
+
+test_kwargs(random=12, parameters=21)
