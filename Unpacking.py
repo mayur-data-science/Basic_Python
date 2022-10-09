@@ -283,7 +283,7 @@ print(type(a),type(b),type(c)) # o/p: <class 'int'> <class 'int'> <class 'int'>
 # Unpacking Operator * (asterisk / star) #
 #----------------------------------------#
 
-        # The single asterisk operator * can be used on any iterable(lists,tuples and strings) object that Python provides.
+        # The single asterisk operator * can be used on any iterable(lists,tuples,set and strings) object that Python provides.
 
 #---------------------------------#
 # * on String : (Ordered,immutable)
@@ -955,3 +955,5 @@ print(major, minor, micro)
     #------------------------------#
     # Returning Tuples in Functions:
     #------------------------------#
+    
+    
