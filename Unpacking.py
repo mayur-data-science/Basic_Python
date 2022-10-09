@@ -115,10 +115,10 @@ print("a:",a,"b:",b,"c:",c,"d:",d,"e:",e)
 
 # Ex : 1.5
 
-x = (1,2,"a",8,{ "key" : 2, "value" : 3 },9) # dictionarie in tuple.
+x = (1,2,"a",8,{ "key1" : 2, "key2" : 3 },9) # dictionarie in tuple.
 a, b, c, d, e, f = x
 print("a==>",a,"b==>",b,"c==>",c,"d==>",d,"e==>",e,"f==>",f) 
-    # o/p: a==> 1 b==> 2 c==> a d==> 8 e==> {'key': 2, 'value': 3} f==> 9
+    # o/p: a==> 1 b==> 2 c==> a d==> 8 e==> {'key1': 2, 'key2': 3} f==> 9
 
 #-----------------------------------------------------------------------------------------------------#
 
@@ -458,6 +458,35 @@ print(*gen)
         # 1 2 4
         # <class 'int'> <class 'int'> <class 'int'>
 
+# Ex : 3
+    # generator unpacking inside a list
+g1 = (x for x in range(3))
+g2 = (x**2 for x in range(2))
+print([1, *g1, 2, *g2]) # o/p: [1, 0, 1, 2, 2, 0, 1]
+
+# equal to
+g1 = (x for x in range(3))
+g2 = (x**2 for x in range(2))
+print([1] + list(g1) + [2] + list(g2)) # o/p: [1, 0, 1, 2, 2, 0, 1]
+
+# Ex : 4
+    # generator unpacking inside a set
+
+g = (x for x in [5, 5, 6, 6])
+print({*g}) # o/p: {5, 6}
+
+
+# Ex : 5
+    # generator unpacking inside a function
+print(*(x for x in range(3))) # o/p: 0 1 2
+
+# Ex : 6 (generator Unpacking and Packing to variable)
+g = (x for x in range(6))
+a, b, *c, d = g # unpacking first second generator values to a, b and last value to d which are mandatory variables
+                # Packing remaining generator values to c
+print(a, b, d) # o/p: 0 1 5
+print(c) # o/p : [2, 3, 4]
+
 
 #--------------------------------------------------------------------------------------------------------------------------#
 
@@ -711,4 +740,53 @@ print(m)
         # frozenset({8, 3, 4})
         # [8, 1, 2, 5]
         # [8, 3, 4]
-#------------------------------------------------------------------------------------------------------------------
+
+
+# Ex : 1 (on generator)
+
+*g, = (x for x in range(6))
+print(g) # o/p : [0, 1, 2, 3, 4, 5]
+
+#-------------------------------------------------------------------------------------------------------------------------------#
+
+#------------------------------------------------#        
+# Unpacking Operator ** (double asterisk / star) #
+#------------------------------------------------#
+
+        # the ** operator is called the dictionary unpacking operator.
+        # The use of this operator was extended by PEP 448.
+        # Now, we can use it in function calls, in comprehensions and generator expressions, and in displays.
+        
+        # A basic use-case for the dictionary unpacking operator is to merge multiple dictionaries into one final dictionary with a single expression.
+
+# Ex : 1
+
+numbers = {"one" : 1, "two" : 2, "three" : 3}
+letters = {"a" : "A", "b" : "B", "c" : "C"}
+combination = {**numbers,**letters}
+print(combination) # o/p : {'one': 1, 'two': 2, 'three': 3, 'a': 'A', 'b': 'B', 'c': 'C'}
+
+        # If we use the dictionary unpacking operator inside a dictionary display, 
+        # then we can unpack dictionaries and combine them to create a final dictionary that includes the key-value pairs of the original dictionaries
+
+# Ex : 2
+    # if the dictionaries we're trying to merge have repeated or common keys,
+    # then the values of the right-most dictionary will override the values of the left-most dictionary.
+
+letters = {"a" : "A", "b" : "B", "c" : "C"}
+vowels = {"a" : "a", "e" : "e", "i" : "i", "o":"o","u":"u"}
+combination = {**letters,**vowels}
+print(combination) # o/p : {'a': 'a', 'b': 'B', 'c': 'C', 'e': 'e', 'i': 'i', 'o': 'o', 'u': 'u'}
+
+        # Python starts adding the key-value pairs from left to right. If, in the process, Python finds keys that already exit, 
+        # then the interpreter updates that keys with the new value.
+
+# Ex : 3
+    # ** in function call.
+def add(one,two,three):
+    print(one+two+three)
+
+numbers = {"one" : 1, "two" : 2, "three" : 3}
+
+add(**numbers) 
+# o/p: 6
