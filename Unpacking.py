@@ -1,6 +1,6 @@
-#--------------------------------#
-# Unpacking and Packing in Python:
-#--------------------------------#
+#----------------------------------#
+# Unpacking and Packing in Python: #
+#----------------------------------#
         
         # Unpacking in Python refers to an operation that consists of assigning an iterable of values to a left hand side
         # (tuple) or [list] of variables in a single assignment statement.
