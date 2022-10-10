@@ -299,7 +299,8 @@ print(my_sum_of_list(*list1, *list2, *list3)) # unpacking list data first using 
 
 # Ex 1:
 
-def concatenate(**words): # words = {'a': 'python', 'b': '3.10.7', 'c': 'Is', 'd': 'Great', 'e': '!'}
+def concatenate(**words):   # words = {'language': 'python', 'version': '3.10.7', 'linking_verb': 'Is', 'appriciation': 'Great', 'e': '!'} 
+                            # packs in dictionarie.
     print(words)
     print(type(words))
     result = ""
@@ -307,11 +308,53 @@ def concatenate(**words): # words = {'a': 'python', 'b': '3.10.7', 'c': 'Is', 'd
         result += arg
     return result
 
-print(concatenate(a="python", b="3.10.7", c="Is", d="Great", e="!"))
+print(concatenate(language="python", version="3.10.7", linking_verb="Is", appriciation="Great", e="!"))
 
     # o/p :
-        # {'a': 'python', 'b': '3.10.7', 'c': 'Is', 'd': 'Great', 'e': '!'}
+        # {'language': 'python', 'version': '3.10.7', 'linking_verb': 'Is', 'appriciation': 'Great', 'e': '!'}
         # <class 'dict'>
         # python3.10.7IsGreat!
+
+# Ex : 2
+
+def concatenate(**words): # words = {'language': 'python', 'version': '3.10.7', 'linking_verb': 'Is', 'appriciation': 'Great', 'e': '!'} # packs in dictionarie.
+    print(words)
+    print(type(words))
+    
+    valueresult = ""
+    for value in words.values():
+        valueresult += value
+    
+
+    keyresult = ""
+    for key in words.keys():
+        keyresult += key
+        
+    key_result = ""
+    value_result = ""
+    
+    for key, value in words.items():
+        key_result += key
+        value_result += value
+    
+    key_value_string = key_result + value_result
+    
+    return valueresult, keyresult, key_value_string
+valueresult, keyresult, key_value_string = concatenate(language="python", version="3.10.7", linking_verb="Is", appriciation="Great", e="!")
+print(valueresult)
+print(keyresult)
+print(key_value_string)
+
+    # o/p : 
+        # {'language': 'python', 'version': '3.10.7', 'linking_verb': 'Is', 'appriciation': 'Great', 'e': '!'}
+        # <class 'dict'>
+        # python3.10.7IsGreat!
+        # languageversionlinking_verbappriciatione
+        # languageversionlinking_verbappriciationepython3.10.7IsGreat!
+        
+        
+#-----------------------------------------------------#
+# Standard argument, *args, **kwargs in same function :
+#-----------------------------------------------------#
 
 
