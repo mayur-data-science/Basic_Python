@@ -1097,3 +1097,19 @@ function2("Welcome to...", *(1, 2, 3), **{"site": 'github.com'})
         # Welcome to...
         # (1, 2, 3)
         # {'site': 'github.com'}
+
+
+def foo(name1, name2 = 1): # name1 = 1 # name2 = 2(overriding default value 1)
+    print(name2)
+
+foo(1, **{'name2': 2}) 
+
+# o/p : 2
+
+def foo(name1, name2): # name1 = 1 # name2 = 2
+    print(name2)
+
+foo(1, **{'name2': 2})
+
+# o/p : 2
+
