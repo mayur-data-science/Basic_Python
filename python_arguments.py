@@ -389,6 +389,8 @@ function(10)
 
     # function() # TypeError: function() missing 1 required positional argument: 'num'
 
+
+
 # Ex : 1
 
 def function1(*args,**kwargs): 
@@ -408,7 +410,10 @@ function1(10, name = "mayur")
 
     # function1(10, name = "mayur")
 
+
+
 # Ex : 2
+
 def function2(num, *args, **kwargs): 
     print(num)
     print(args)
@@ -428,7 +433,10 @@ function2(10, "star args", 30, name = "mayur")
 
     # function("star args", 30, name = "mayur",10)
 
+
+
 # Ex : 3
+
 def function3(num, *args, sirname = "Adhude", **kwargs): 
     print(num)
     print(sirname)
@@ -461,6 +469,7 @@ function3(10, "star args", 30, name = "mayur")
         #     print(kwargs)
 
         # function(10, sirname = "bhosle", "star args", 30, name = "mayur") # SyntaxError: positional argument follows keyword argument
+
 
 
 # Ex : 4
