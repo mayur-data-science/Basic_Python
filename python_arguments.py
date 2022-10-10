@@ -1,6 +1,6 @@
-                                #------------------#
-                                # Python Arguments :
-                                #------------------#
+                                #---------------------------------#
+                                # Python Parameters and Arguments :
+                                #---------------------------------#
 
 #----------------------------------------------------------------------------------------------------------
 
@@ -487,11 +487,132 @@ function(10, (1,5,8,9), sirname = "Adhude" )
         # (1, 5, 8, 9)
         # ()
         # {'sirname': 'Adhude'}
+#-------------------------------------------------------------------------------------------#
+
+#----------------------------------------------------------------#
+# (PEP 570) Positional-Only Parameters & Keyword-Only parameters #
+#----------------------------------------------------------------#
+
+    # This PEP(Python Enhancement Proposal) 570 proposes to introduce a new syntax, /(forward-slash), 
+    # and * for specifying positional-only parameters and Keyword-Only parameters recpectively in Python function definitions.
 
 
+#----------------------------#
+# Positional-Only Parameters #
+#----------------------------#
+
+        # Positional-only parameters would be placed before a / (forward-slash).
+        # The / is used to logically separate the positional-only parameters from the rest of the parameters.
+        # If there is no / in the function definition, there are no positional-only parameters.
+        
+        # Parameters after the / may be positional-or-keyword or keyword-only.
+
+def standard_arg(arg):
+    print(arg)
+    
+standard_arg(2)
+standard_arg(arg=2)
+    # o/p : 2
+    #       2
+
+def pos_only_arg(arg, /):
+    print(arg)
+    
+pos_only_arg(1)
+pos_only_arg(arg=1)
+# o/p : 1
+#       TypeError: pos_only_arg() got some positional-only arguments passed as keyword arguments: 'arg'
+
+def pos_only_arg(pos1, /, pos2, kw_arg, kw_r, optl_kw = 7): # Parameters after the / may be positional-or-keyword or keyword-only and at last optional keyword parameter.
+    print(pos1)
+    print(pos2)
+    print(kw_arg)
+    print(kw_r)
+    print(optl_kw)
+    
+pos_only_arg(3,"mayur", kw_arg = 3, kw_r=2, optl_kw = 8)
 
 
+#-------------------------#
+# Keyword-Only Parameters #
+#-------------------------#
+
+        # To mark parameters as keyword-only, indicating the parameters must be passed by keyword argument,
+        # place an only * in the arguments list just before the first keyword-only parameter.
+        
+        # Parameters before the * may be Positional-Only or positional-or-keyword
 
 
+def kwd_only_arg(*, arg): # function kwd_only_args only allows keyword arguments while calling as indicated by a * in the function definition
+    print(arg)
+
+kwd_only_arg(arg=3)
+kwd_only_arg(3) # TypeError: kwd_only_arg() takes 0 positional arguments but 1 was given
 
 
+def kwd_only_arg(pos, kw, *, kw_arg, kw_r):  # Parameters before the * may be Positional-Only or positional-or-keyword
+    print(pos)
+    print(kw)
+    print(kw_arg)
+    print(kw_r)
+    
+kwd_only_arg(3, kw = 8, kw_arg = 3, kw_r=2)
+    # o/p :
+        # 3
+        # 8
+        # 3
+        # 2
+
+
+#-------------#
+# Combination #
+#-------------#
+
+
+        # def f(pos1, pos2, /, pos_or_kwd, *, kwd1, kwd2):
+        #       -----------    ----------     ----------
+        #         |             |                  |
+        #         |        Positional or keyword   |
+        #         |                                |
+        #         |                                |--> Keyword only
+        #         |--> Positional only
+
+
+def combined_example(pos_only, /, standard, *, kwd_only):
+    print(pos_only, standard, kwd_only)
+
+combined_example(1, 2, kwd_only=3) # o/p : 1 2 3
+combined_example(1, standard=2, kwd_only=3) # o/p : 1 2 3
+combined_example(1, 2, 3) # TypeError: combined_example() takes 2 positional arguments but 3 were given
+combined_example(pos_only=1, standard=2, kwd_only=3) # TypeError: combined_example() got some positional-only arguments passed as keyword arguments: 'pos_only'
+
+#----------------------------------#
+# issue solved with above apporach #
+#----------------------------------#
+
+
+# def func5(name, name = 5): # SyntaxError: duplicate argument 'name' in function definition
+#     print(name)
+
+# name = func5(1, **{'name': 2}) # # func5(1, **{'name': 2}) is same as func5(1, name = 2) # unpacking {'name' : 2} with **.
+# print(name)
+
+
+        #issue
+def func5(name, **kwds):    # valid definition but there is a issue(name getting multiple values 1 and 2)
+                            #(while calling we are providing Multiple values to name parameter,
+                            # name already got 1 and again we are providing name = 2 i.e 2 value to name)
+                            # this sometimes happens because data(i.e key) in dictionarie having same name as function parameter Name
+                            # func5(1, **{'name': 2}) is same as func5(1, name = 2) # unpacking {'name' : 2} with **.
+    return 'name' in kwds
+
+func5(1, **{'name': 2}) # TypeError: func5() got multiple values for argument 'name'
+
+        # we can solve this problem, telling python to take positional-only argument to left side of /(forword-slash)
+
+def func5(name, /, **kwds):
+    return 'name' in kwds
+
+name = func5(1, **{'name': 2})  # func5(1, **{'name': 2}) is same as func5(1, name = 2) # unpacking {'name' : 2} with **.
+                                # while unpacking dictionarie with ** we get keyword argument(key as argument Name and assinging associate vale to it)
+print(name) # o/p : True
