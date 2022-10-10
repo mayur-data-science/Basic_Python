@@ -1079,25 +1079,21 @@ func("Welcome to...", 1, 2, 3, site='github.com')
         # In the function call, the operators mean unpack an iterable into several arguments.
 
 
-def func(welcome, to, site):
+def function1(welcome, to, site):
     print(welcome, to, site)
 
-func(*["Welcome", "to"], **{"site": 'github.com'})
+function1(*["Welcome", "to"], **{"site": 'github.com'})
 
     # o/p : Welcome to github.com
 
-def func(required, *args, **kwargs):
+def function2(required, *args, **kwargs):
     print(required)
     print(args)
     print(kwargs)
 
-func("Welcome to...", *(1, 2, 3), **{"site": 'StackAbuse.com'})
+function2("Welcome to...", *(1, 2, 3), **{"site": 'github.com'})
 
     # o/p : 
         # Welcome to...
         # (1, 2, 3)
-        # {'site': 'StackAbuse.com'}
-
-
-
-
+        # {'site': 'github.com'}
