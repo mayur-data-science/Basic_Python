@@ -354,7 +354,135 @@ print(key_value_string)
         
         
 #-----------------------------------------------------#
-# Standard argument, *args, **kwargs in same function :
+# Standard arguments, *args, **kwargs in same function :
 #-----------------------------------------------------#
+
+            # the correct order for your parameters is:
+                # Standard arguments
+                # *args arguments
+                # **kwargs arguments
+
+
+# Ex : 0
+
+def function(num,string="python 3.10.7",*args,**kwargs): 
+    print(num)
+    print(string)
+    print(args)
+    print(kwargs)
+
+function(10) 
+
+        # o/p : 
+            # 10
+            # python 3.10.7
+            # ()
+            # {}
+        
+    # Ex : 0.1
+    
+    # def function(num,string="python 3.10.7",*args,**kwargs): 
+    #     print(num)
+    #     print(string)
+    #     print(args)
+    #     print(kwargs)
+
+    # function() # TypeError: function() missing 1 required positional argument: 'num'
+
+# Ex : 1
+
+def function1(*args,**kwargs): 
+    print(args)
+    print(kwargs)
+
+function1(10, name = "mayur")
+
+    # o/p : 
+        # (10,)
+        # {'name': 'mayur'}
+
+    # Ex : 1.1
+    # def function1(**kwargs, *args): # SyntaxError: invalid syntax
+    #     print(args)
+    #     print(kwargs)
+
+    # function1(10, name = "mayur")
+
+# Ex : 2
+def function2(num, *args, **kwargs): 
+    print(num)
+    print(args)
+    print(kwargs)
+
+function2(10, "star args", 30, name = "mayur")
+    # o/p : 
+        # 10
+        # ('star args', 30)
+        # {'name': 'mayur'}
+
+    # Ex : 2.1
+    # def function(*args, **kwargs, num): # SyntaxError: invalid syntax
+    #     print(num)
+    #     print(args)
+    #     print(kwargs)
+
+    # function("star args", 30, name = "mayur",10)
+
+# Ex : 3
+def function3(num, *args, sirname = "Adhude", **kwargs): 
+    print(num)
+    print(sirname)
+    print(args)
+    print(kwargs)
+
+function3(10, "star args", 30, name = "mayur")
+
+    # o/p : 
+        # 10
+        # Adhude
+        # ('star args', 30)
+        # {'name': 'mayur'}
+        
+        # Ex : 3.1
+        # def function3(num, sirname = "Adhude", *args, **kwargs): 
+        #     print(num)
+        #     print(args)
+        #     print(sirname)
+        #     print(kwargs)
+
+        # function3(10, "star args", 30, sirname = "bhosle", name = "mayur") # TypeError: function3() got multiple values for argument 'sirname'
+        
+        
+        # Ex : 3.2
+        # def function(num, *args, sirname = "Adhude", **kwargs): 
+        #     print(num)
+        #     print(args)
+        #     print(sirname)
+        #     print(kwargs)
+
+        # function(10, sirname = "bhosle", "star args", 30, name = "mayur") # SyntaxError: positional argument follows keyword argument
+
+
+# Ex : 4
+
+def function(num, name = "mayur", *args, **kwargs): 
+    print(num)
+    print(name)
+    print(args)
+    print(kwargs)
+
+function(10, (1,5,8,9), sirname = "Adhude" )
+
+    # o/p : 
+        # 10
+        # (1, 5, 8, 9)
+        # ()
+        # {'sirname': 'Adhude'}
+
+
+
+
+
+
 
 
