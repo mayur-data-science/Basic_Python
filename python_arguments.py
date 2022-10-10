@@ -62,14 +62,18 @@ sum(1,10+20j) # passing int and complex data as an arguments to function.
         # <class 'complex'>
 
 #----------------------------------------------------------------------------------------------------------------
+#--------------------#
+# Standard Arguments :
+#--------------------#
 
-#----------------------#
-# Positional Arguments :
-#----------------------#
-        # Positional arguments are arguments that need to be included in the proper position or order.
-        # Positional Arguments are always be defined first in function declaration
-        # i.e the first argument is always listed first when the function is called, 
-        # second argument needs to be listed second when function is called and so on....
+
+    #----------------------#
+    # Positional Arguments :
+    #----------------------#
+            # Positional arguments are arguments that need to be included in the proper position or order.
+            # Positional Arguments are always be defined first in function declaration
+            # i.e the first argument is always listed first when the function is called, 
+            # second argument needs to be listed second when function is called and so on....
 
 # Ex : 1
 
@@ -81,14 +85,14 @@ person_name("Ram","Babu")   # First name is Ram placed first
                             
 #-----------------------------------------------------------------------------------------------------------------------------
 
-#------------------#
-# Keyword Arguments:
-#------------------#
+    #------------------#
+    # Keyword Arguments:
+    #------------------#
         
-        # Keyword Arguments is an argument passed to a function or method which is preceded by a keyword and an equal to sign.
-        # The order in keyword Arguments need not to be same as in positional argument.
-        # while calling a function we explicitly telling python which argument value goes 
-        # to which parameters in function declation by keyword names same as given in parameters.
+            # Keyword Arguments is an argument passed to a function or method which is preceded by a keyword and an equal to sign.
+            # The order in keyword Arguments need not to be same as in positional argument.
+            # while calling a function we explicitly telling python which argument value goes 
+            # to which parameters in function declation by keyword names same as given in parameters.
 
 # Ex : 1
 
@@ -99,13 +103,13 @@ person_name(second_name="Babu",first_name="Ram") # Here we are explicitly assign
 
 #---------------------------------------------------------------------------------------------------------------------------------
 
-#----------------------------------------------------------#
-# Positional Arguments & Keyword Arguments in same function:
-#----------------------------------------------------------#
+    #----------------------------------------------------------#
+    # Positional Arguments & Keyword Arguments in same function:
+    #----------------------------------------------------------#
         
-        # if we specify positional arguments and  Keyword Arguments in same function its mandatory that 
-        # we must specify "positional Arguments" "first" and then specify Keyword Arguments.
-        # other wise we will get syntaxError.
+            # if we specify positional arguments and  Keyword Arguments in same function its mandatory that 
+            # we must specify "positional Arguments" "first" and then specify Keyword Arguments.
+            # other wise we will get syntaxError.
 
 # Ex : 1
 
@@ -127,21 +131,21 @@ fruits("apple", banana = "banana", pineapple = "pineapple")     # two Keyword Ar
 
 #------------------------------------------------------------------------------------------------------------------------------------------
 
-#------------------------------------------#
-# Python Default and Non-default Parameters:
-#------------------------------------------#
+    #------------------------------------------#
+    # Python Default and Non-default Parameters:
+    #------------------------------------------#
 
-    #   Function parameters have default data assigned to them. (data can be callable function, string, int, float, boolean(True or False),complex )
-    #   This can be done by using the assignment operator (=) in the function parameter. 
-    #   When a function is called without an argument, the default data is used from parameter inside function. 
-    #   This is useful when someone forgets to pass an argument while calling function and executes the program.
-    #   default arguments(parameter) , must be followed by Non-default arguments(parameter).
-    #   means we must write positional argument(parameter) first, then deafult argument(parameter)
+        #   Function parameters have default data assigned to them. (data can be callable function, string, int, float, boolean(True or False),complex )
+        #   This can be done by using the assignment operator (=) in the function parameter. 
+        #   When a function is called without an argument, the default data is used from parameter inside function. 
+        #   This is useful when someone forgets to pass an argument while calling function and executes the program.
+        #   default arguments(parameter) , must be followed by Non-default arguments(parameter).
+        #   means we must write positional argument(parameter) first, then deafult argument(parameter)
 
-    # Note – Python Default parameter are also called as Python Optional parameter.
-    #        its not mandatory to pass default or optional parameter as an argument while calling a function.
-    #        if we provide default argument while calling function, the dafault data will not be utilized from function parameter.(overridding deafult data)
-    #        if we dont provide default argument while calling function, the default data will be utilized from function parameter.
+        # Note – Python Default parameter are also called as Python Optional parameter.
+        #        its not mandatory to pass default or optional parameter as an argument while calling a function.
+        #        if we provide default argument while calling function, the dafault data will not be utilized from function parameter.(overridding deafult data)
+        #        if we dont provide default argument while calling function, the default data will be utilized from function parameter.
 
 # Ex 1:
 
