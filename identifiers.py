@@ -55,7 +55,7 @@ print(TOTAL) #999
 
         # 1) 123total (invalid)
         # 2) total123 √
-        # 3) java2share √
+        # 3) python2share √
         # 4) ca$h (invalid)
         # 5) _abc_abc_ √
         # 6) def (invalid)
@@ -63,6 +63,6 @@ print(TOTAL) #999
 
     # Note: 
         # 1) If identifier starts with _ symbol then it indicates that it is private
-        # 2) If identifier starts with __(Two Under Score Symbols) indicating that strongly private identifier.
+        # 2) If identifier starts with __ (Two Under Score Symbols) indicating that strongly private identifier.
         # 3) If the identifier starts and ends with two underscore symbols then the identifier is language defined special name, which is also known as magic methods.
         # 4) Eg: __add__
