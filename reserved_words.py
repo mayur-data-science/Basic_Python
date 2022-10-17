@@ -36,3 +36,28 @@ print(keyword.kwlist)
     # 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 
     # 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 
     # 'return', 'try', 'while', 'with', 'yield']
+
+
+#-----------------#
+# "soft" keywords :
+#-----------------#
+    # 1) match
+    # 2) case
+    
+        # match and case are better described as "soft" keywords.
+
+        # "soft" keywords means You can keep using “match” or “case” as a variable name in other parts of your program.
+
+        # The match case statement in Python is more powerful and allows for more complicated pattern matching.
+
+match = 10
+case = 20
+
+command = 'Hello, World!'
+match command:
+    case 'Hello, World!':
+        print('Hello to you too!')
+    case 'Goodbye, World!':
+        print('See you later')
+    case other:
+        print('No match found')
