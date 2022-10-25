@@ -82,5 +82,30 @@
     # Note: Being a programmer we can specify literal(data) values in decimal, binary, octal and hexa decimal forms.
     # But PVM will always provide values only in decimal form.
     
-    # a = 10          | d = 0B10        | b = 0o10       | c = 0X10
-    # print(a) # 10   | print(d) # 2    | print(b) # 8   | print(c) # 16
+        # a = 10          | d = 0B10        | b = 0o10       | c = 0X10
+        # print(a) # 10   | print(d) # 2    | print(b) # 8   | print(c) # 16
+    
+    
+    # Base Conversions :
+        # Python provide the following in-built functions for base conversions
+        
+        # 1) bin(): 
+            # We can use bin() to convert from any base to binary
+            # Ex:
+                # print(bin(15))   # 0b1111
+                # print(bin(0o11)) # 0b1001
+                # print(bin(0X10)) # 0b10000
+        
+        # 2) oct():
+            # We can use oct() to convert from any base to octal
+            # Ex:
+                # print(oct(10))	 # 0o12
+                # print(oct(0B1111)) # 0o17
+                # print(oct(0X123))	 # 0o443
+        
+        # 3) hex():
+            # We can use hex() to convert from any base to hexa decimal.
+            # Ex:
+                # print(hex(100)) # 0x64
+                # print(hex(0B111111)) # 0x3f
+                # print(hex(0o12345)) # 0x14e5
